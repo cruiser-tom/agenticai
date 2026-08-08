@@ -35,7 +35,7 @@ st.markdown("""
 
     /* 2. Target main question text for all widgets */
     div[data-testid="stWidgetLabel"] p {
-        font-size: 18px !important;
+        font-size: 20px !important;
         font-weight: 600 !important;
         color: #1F2937 !important;
     }
@@ -47,7 +47,7 @@ st.markdown("""
         flex-wrap: nowrap !important;
         justify-content: space-between !important;
         gap: 6px !important;
-        width: 100% !important;
+        width: 120% !important;
     }
 
     /* 2. Format each option as a stacked vertical pill */
