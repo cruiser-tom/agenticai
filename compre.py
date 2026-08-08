@@ -87,15 +87,12 @@ st.markdown("""
         border-color: rgba(255, 255, 255, 0.25) !important;
     }
 
-    /* Force Radio Dot to Blue when Selected */
-    div[data-testid="stRadio"] div[role="radio"][aria-checked="true"],
-    div[data-testid="stRadio"] label:has(input:checked) div[role="radio"] {
-        background-color: #3B82F6 !important;
-        border-color: #3B82F6 !important;
-        filter: hue-rotate(215deg) saturate(2) !important;
+    /* Completely hide the default radio dot to remove the red color issue */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
+        display: none !important;
     }
 
-    /* Selected State Container */
+    /* 5. Selected State Container (Clean Blue Card) */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) {
         background-color: rgba(37, 99, 235, 0.2) !important;
         border: 2px solid #3B82F6 !important;
@@ -107,15 +104,6 @@ st.markdown("""
         color: #FFFFFF !important;
         background-color: transparent !important;
         font-weight: 500 !important;
-    }
-
-    /* Radio Dot Alignment */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
-        margin-right: 12px !important;
-        margin-left: 0 !important;
-        margin-bottom: 0 !important;
-        flex-shrink: 0 !important;
-        background-color: transparent !important;
     }
 
     /* 6. RATING SCALES ONLY (5-point & 7-point scales): Horizontal single row */
@@ -136,7 +124,7 @@ st.markdown("""
         justify-content: center !important;
         align-items: center !important;
         padding: 10px 10px !important;        /* Padding INSIDE each container */
-        gap: 8px !important;                  /* Space between bullet dot and number */
+        gap: 8px !important;                  
     }
     
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"] > label p,
@@ -146,13 +134,6 @@ st.markdown("""
         text-align: center !important;
         white-space: nowrap !important;
         margin: 0 !important;
-    }
-    
-    div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"] > label > div:first-child,
-    div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] > label > div:first-child {
-        margin-right: 0 !important;          /* Spacing handled by label gap above */
-        margin-left: 0 !important;
-        margin-bottom: 0 !important;
     }
 
     /* Custom class for front page title */
