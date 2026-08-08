@@ -19,7 +19,7 @@ st.markdown("""
     <style>
     /* 1. Target main question text for all widgets (Radio, Slider, Selectbox, Inputs) */
     div[data-testid="stWidgetLabel"] p {
-        font-size: 20px !important;
+        font-size: 25px !important;
         font-weight: 600 !important;
         color: #1F2937 !important;
     }
