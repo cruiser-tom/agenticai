@@ -57,8 +57,8 @@ st.markdown("""
         align-items: stretch !important;
         width: 100% !important;
         max-width: 100% !important;
-        gap: 8px !important;                 /* Even spacing between scale pills */
-        padding: 6px 0 !important;
+        gap: 9px !important;                 /* Even spacing between scale pills */
+        padding: 6px 3px !important;
     }
 
     /* 5. Scale Options: Forces each 1-7 pill to expand equally across full container width */
