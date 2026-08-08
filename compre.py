@@ -89,24 +89,24 @@ st.markdown("""
     }
  
     /* Recolor the selection dot to the app's blue accent instead of Streamlit's
-       default red/pink. Targeted precisely via DOM inspection: the dot is a div
-       that sits as a sibling immediately BEFORE the option's text container
-       (stMarkdownContainer) inside each radio label — this holds regardless of
-       Streamlit's internal (unstable, hash-based) class names. */
+       default red/pink — but ONLY for the checked/selected option, matching the
+       dot's actual structural position: a div sibling immediately BEFORE the
+       option's text container (stMarkdownContainer). */
     div[data-testid="stRadio"] input[type="radio"] {
         accent-color: #3B82F6 !important;
     }
-    div[data-testid="stRadio"] label div:has(+ [data-testid="stMarkdownContainer"]),
-    div[data-testid="stRadio"] label div:has(+ [data-testid="stMarkdownContainer"]) * {
+    div[data-testid="stRadio"] label:has(input:checked) div:has(+ [data-testid="stMarkdownContainer"]),
+    div[data-testid="stRadio"] label:has(input:checked) div:has(+ [data-testid="stMarkdownContainer"]) * {
         background-color: #3B82F6 !important;
         background-image: none !important;
         box-shadow: none !important;
         fill: #3B82F6 !important;
         color: #3B82F6 !important;
     }
-    /* Broad fallback in case the sibling structure above ever changes */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child,
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child * {
+    /* Broad fallback in case the sibling structure above ever changes — also
+       scoped to checked options only */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) > div:first-child,
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) > div:first-child * {
         accent-color: #3B82F6 !important;
         fill: #3B82F6 !important;
         stroke: #3B82F6 !important;
@@ -172,6 +172,7 @@ st.markdown("""
     .stButton>button { width: 100%; border-radius: 8px; font-weight: bold; background-color: #0066cc; color: white; }
     </style>
 """, unsafe_allow_html=True)
+ 
 # ==========================================
 # 2. EXPERIMENTAL SCENARIOS DEFINITION
 # ==========================================
