@@ -20,7 +20,7 @@ st.markdown("""
     <style>
     /* Question labels for radio buttons, sliders, text inputs, etc. */
     .stRadio label, .stSlider label, .stSelectbox label, .stTextInput label, .stTextArea label {
-        font-size: 19px !important;
+        font-size: 25px !important;
         font-weight: 600 !important;
         color: #1F2937;
     }
