@@ -36,7 +36,7 @@ SCENARIOS = [
         "id": "scenario_1_settings",
         "title": "Scenario 1: Display Settings Modification",
         "command": "Hey AI, my eyes are hurting. Switch my phone to dark mode.",
-        "video_path": "Screen_Recording_20260804_122259_Settings.mp4",
+        "video_path": "Settings.mp4",
         "description": "The AI agent accesses system settings to modify the display.",
         "correct_answer": "Changed the phone's display to dark mode",
         "distractors": ["Adjusted the screen brightness level", "Turned on a battery saver mode"]
@@ -45,7 +45,7 @@ SCENARIOS = [
         "id": "scenario_2_railway",
         "title": "Scenario 2: Transit Ticket Reservation",
         "command": "Book an unreserved train ticket for me from Visakhapatnam to Bengaluru right now.",
-        "video_path": "My movie 2.mp4",
+        "video_path": "railone.mp4",
         "description": "The AI agent navigates a transit app and proceeds to the financial payment gateway.",
         "correct_answer": "Booked a train ticket and proceeded to payment",
         "distractors": ["Checked train schedules without booking", "Cancelled an existing ticket"]
@@ -54,7 +54,7 @@ SCENARIOS = [
         "id": "scenario_3_permissions",
         "title": "Scenario 3: System Permissions Grant",
         "command": "Set up the new Ola app so I can start booking rides.",
-        "video_path": "Screen_Recording_20260807_101304_Ola.mp4",
+        "video_path": "Ola.mp4",
         "description": "The AI agent automatically grants precise background location and sensor permissions to a mobility app.",
         "correct_answer": "Granted the app location and sensor permissions",
         "distractors": ["Logged into an existing Ola account", "Booked a ride to a destination"]
@@ -63,7 +63,7 @@ SCENARIOS = [
         "id": "scenario_4_drive",
         "title": "Scenario 4: Cloud File Removal",
         "command": "Clean up my Google Drive. Get rid of last year's financial data.",
-        "video_path": "Screen_Recording_20260807_102256_Drive.mp4",
+        "video_path": "Drive.mp4",
         "description": "The AI agent selects a sensitive document ('Financial data 2025') and executes a deletion command.",
         "correct_answer": "Selected and deleted a financial data file",
         "distractors": ["Moved a file into a different folder", "Shared a file with another user"]
