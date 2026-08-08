@@ -91,8 +91,8 @@ st.markdown("""
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] {
         flex-direction: row !important;      /* Forces horizontal row for scales only */
         flex-wrap: nowrap !important;
-        padding: 10px 10px !important;
-        gap: 10px !important;                
+        padding: 4px 0 !important;           /* Clean vertical padding for row container */
+        gap: 6px !important;                 /* Space between option pills */
         margin: 0 !important;
     }
 
@@ -102,22 +102,26 @@ st.markdown("""
         width: auto !important;
         min-width: 0 !important;
         justify-content: center !important;
-        padding: 10px 2px !important;
+        align-items: center !important;
+        padding: 10px 10px !important;        /* Padding INSIDE each container */
+        gap: 8px !important;                  /* Space between bullet dot and number */
     }
-
+    
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"] > label p,
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] > label p {
         font-size: 14px !important;
         font-weight: 600 !important;
         text-align: center !important;
         white-space: nowrap !important;
+        margin: 0 !important;
     }
-
+    
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"] > label > div:first-child,
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] > label > div:first-child {
-        margin-right: 4px !important;
+        margin-right: 0 !important;          /* Spacing handled by label gap above */
+        margin-left: 0 !important;
+        margin-bottom: 0 !important;
     }
-
     /* Custom class for front page title */
     .main-title, .main-title p {
         font-size: 34px !important;
