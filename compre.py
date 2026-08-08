@@ -67,6 +67,14 @@ st.markdown("""
     .stVideo { border-radius: 6px; overflow: hidden; box-shadow: 0px 4px 12px rgba(0,0,0,0.15); }
     .scenario-card { background-color: #f8f9fa; padding: 10px; border-radius: 6px; margin-bottom: 10px; border-left: 5px solid #0066cc; }
     .stButton>button { width: 100%; border-radius: 6px; font-weight: bold; background-color: #0066cc; color: white; }
+
+    /* Custom class for the front page title and its internal paragraph tags */
+    .main-title, .main-title p {
+    font-size: 38px !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    margin-bottom: 15px !important;
+}
     </style>
 """, unsafe_allow_html=True)
 
@@ -157,7 +165,8 @@ if 1 <= current_step <= len(SCENARIOS):
 
 # --- STEP 0: WELCOME & BRIEF OVERVIEW ---
 if current_step == 0:
-    st.markdown("<div style='font-size: 60px !important; font-weight: 700 !important; margin-bottom: 15px;'>🤖 Agentic AI Interaction Study</div>", unsafe_allow_html=True)
+    st.markdown('<div class="main-title">🤖 Agentic AI Interaction Study</div>', unsafe_allow_html=True)
+    st.subheader("Participant Information")
     st.subheader("Participant Information")
     st.markdown("""
     Welcome! In this brief study, you will watch short recordings of an **Autonomous Mobile AI Agent** performing requested actions on a mobile device.
