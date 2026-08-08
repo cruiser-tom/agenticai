@@ -72,7 +72,7 @@ st.markdown("""
         flex-direction: row !important;
         flex-wrap: nowrap !important;
         justify-content: space-between !important;
-        gap: 6px !important;
+        gap: 10px !important;
         width: 100% !important;
     }
 
