@@ -41,23 +41,26 @@ st.markdown("""
         color: #1F2937 !important;
     }
 
-    /* 3. LONG TEXT QUESTIONS (Q1, Q2): Stack vertically as full-width cards with multi-line wrapping */
+    /* 3. DEFAULT RADIO GROUP CONTAINER: Responsive flex-wrap row */
     div[data-testid="stRadio"] > div[role="radiogroup"] {
         display: flex !important;
-        flex-direction: column !important;
-        gap: 10px !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
         width: 100% !important;
         padding: 4px 0 !important;
     }
 
+    /* 4. OPTION CARDS / PILLS: Responsive sizing based on text length */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label {
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
         justify-content: flex-start !important;
-        width: 100% !important;
+        flex: 1 1 130px !important;            /* Short pills sit side-by-side; long sentences expand to 100% width */
+        max-width: 100% !important;
         box-sizing: border-box !important;
-        padding: 12px 14px !important;
+        padding: 10px 14px !important;
         margin: 0 !important;
         background-color: rgba(128, 128, 128, 0.08) !important;
         border: 1px solid rgba(128, 128, 128, 0.2) !important;
@@ -65,70 +68,51 @@ st.markdown("""
         cursor: pointer !important;
     }
 
-    /* Allow multi-line text wrapping for full-width questions */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label p {
+    /* 5. TEXT WRAPPING: Enables natural line wrapping for sentence questions without mid-word breaks */
+    div[data-testid="stRadio"] label p {
         font-size: 15px !important;
         font-weight: 500 !important;
-        white-space: normal !important;       /* Wraps long sentence options onto new lines */
-        word-break: break-word !important;
-        overflow-wrap: break-word !important;
+        white-space: normal !important;        /* Wraps sentences onto new lines to prevent overflow */
+        word-break: normal !important;         /* Prevents breaking words or hyphens mid-word */
+        overflow-wrap: break-word !important;  /* Wraps strictly at space boundaries */
         line-height: 1.35 !important;
         margin: 0 !important;
     }
 
+    /* 6. RADIO CIRCLE ALIGNMENT */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
         margin-right: 10px !important;
         margin-left: 0 !important;
         margin-bottom: 0 !important;
-        flex-shrink: 0 !important;           /* Prevents radio dot from squishing */
+        flex-shrink: 0 !important;            /* Prevents radio circle from squishing when text wraps */
     }
 
-    /* 4. DEMOGRAPHICS & SHORT PILLS (Age, Gender): Lay out horizontally & PREVENT mid-word splitting */
-    div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:not(:nth-child(5)):not(:nth-child(7))) > div[role="radiogroup"] {
-        flex-direction: row !important;      /* Displays short options in a horizontal row */
-        flex-wrap: wrap !important;
-    }
-
-    div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:not(:nth-child(5)):not(:nth-child(7))) > div[role="radiogroup"] > label {
-        width: auto !important;              /* Sizes container to content */
-        flex: 0 0 auto !important;
-        padding: 10px 16px !important;
-    }
-
-    /* Force short options (e.g. 18–24) to NEVER split across lines */
-    div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:not(:nth-child(5)):not(:nth-child(7))) > div[role="radiogroup"] > label p {
-        white-space: nowrap !important;       /* Prevents 18–24 from breaking into two lines */
-    }
-
-    /* 5. LIKERT SCALES (1–5 & 1–7): Force 100% full-width horizontal stretch */
+    /* 7. LIKERT SCALES (1–5 & 1–7): Force 100% single-row horizontal distribution */
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"],
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] {
-        display: flex !important;
-        flex-direction: row !important;
         flex-wrap: nowrap !important;
-        width: 100% !important;
-        gap: 8px !important;
+        gap: 6px !important;
     }
 
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"] > label,
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] > label {
-        flex: 1 1 0% !important;             /* Stretches scale numbers evenly across full width */
+        flex: 1 1 0% !important;              /* Distributes rating numbers evenly across the container */
         min-width: 0 !important;
         justify-content: center !important;
-        padding: 12px 0px !important;
+        padding: 10px 2px !important;
     }
 
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"] > label p,
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] > label p {
-        font-size: 15px !important;
+        font-size: 14px !important;
         font-weight: 600 !important;
-        white-space: nowrap !important;
         text-align: center !important;
+        white-space: nowrap !important;
     }
 
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"] > label > div:first-child,
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] > label > div:first-child {
-        margin-right: 6px !important;
+        margin-right: 4px !important;
     }
 
     /* Custom class for front page title */
