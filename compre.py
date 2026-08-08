@@ -40,34 +40,54 @@ st.markdown("""
         color: #1F2937 !important;
     }
 
-    /* 3. Force 1-7 rating scale radio buttons onto a single horizontal row */
+    /* 1. Equal width row for 1-7 scale */
     div[data-testid="stRadio"] > div[role="radiogroup"] {
+        display: flex !important;
         flex-direction: row !important;
         flex-wrap: nowrap !important;
         justify-content: space-between !important;
-        gap: 4px !important;               /* Creates clear spacing between options */
+        gap: 6px !important;
         width: 100% !important;
     }
 
-    /* 4. Convert each option into a pill-card with Circle on TOP, Number below */
+    /* 2. Format each option as a stacked vertical pill */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label {
         flex: 1 1 0 !important;
         display: flex !important;
-        flex-direction: column !important; /* Stacks radio circle above the text */
+        flex-direction: column !important;  /* Stacks circle above number */
         align-items: center !important;
         justify-content: center !important;
-        background-color: rgba(128, 128, 128, 0.08) !important; /* Works in dark & light themes */
-        border: 1px solid rgba(128, 128, 128, 0.2) !important;
+        background-color: var(--background-secondary-color, rgba(128, 128, 128, 0.05)) !important;
+        border: 1px solid rgba(128, 128, 128, 0.15) !important;
         border-radius: 8px !important;
-        padding: 8px 0px 6px 0px !important;
+        padding: 8px 0px !important;
         margin: 0 !important;
+        min-width: 0 !important;
         cursor: pointer !important;
     }
 
-    /* 5. Remove right-side margin on the radio circle */
+    /* 3. Center inner elements & reset side margins */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* 4. Remove right margin from radio dot and push down slightly */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
-        margin-right: 0px !important;
+        margin-right: 0 !important;
         margin-bottom: 4px !important;
+    }
+
+    /* 5. Center number label below circle */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label p {
+        font-size: 15px !important;
+        font-weight: 600 !important;
+        text-align: center !important;
+        margin: 0 !important;
+        line-height: 1 !important;
     }
 
     /* 6. Center and format the number text below the circle */
