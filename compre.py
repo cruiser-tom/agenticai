@@ -85,6 +85,14 @@ st.markdown("""
         background-color: rgba(255, 255, 255, 0.08) !important;
         border-color: rgba(255, 255, 255, 0.25) !important;
     }
+        /* Force inner radio dot to blue when selected */
+    div[data-testid="stRadio"] label input[type="radio"]:checked + div,
+    div[data-testid="stRadio"] label:has(input:checked) div[role="radio"],
+    div[data-testid="stRadio"] label:has(input:checked) > div:first-child {
+        background-color: #3B82F6 !important;
+        border-color: #3B82F6 !important;
+        accent-color: #3B82F6 !important;
+    }
 
     /* 5. Modern Selected State (Deep blue card with crisp light-blue outline) */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) {
