@@ -19,6 +19,9 @@ st.markdown('<div id="top-anchor"></div>', unsafe_allow_html=True)
 
 st.markdown("""
     <style>
+    :root, .stApp {
+        --primary-color: #3B82F6 !important;
+    }
     /* 1. Header & Title Sizes */
     h1, h2, h3 {
         font-size: 22px !important;
