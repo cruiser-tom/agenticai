@@ -44,7 +44,7 @@ st.markdown("""
     /* 3. DEFAULT TEXT RADIO OPTIONS (e.g., Q1 & Q2): Stack vertically into full-width cards */
     div[data-testid="stRadio"] > div[role="radiogroup"] {
         display: flex !important;
-        flex-direction: column !important;   /* Stacks choices vertically */
+        flex-direction: column !important;   
         gap: 8px !important;
         width: 100% !important;
     }
@@ -54,7 +54,7 @@ st.markdown("""
         flex-direction: row !important;
         align-items: center !important;
         justify-content: flex-start !important;
-        width: 100% !important;               /* Full screen width so text never chops */
+        width: 100% !important;              
         padding: 12px 14px !important;
         margin: 0 !important;
         background-color: rgba(128, 128, 128, 0.08) !important;
@@ -283,11 +283,11 @@ elif 1 <= current_step <= len(SCENARIOS):
         st.session_state[options_key] = opts
     comp_options = st.session_state[options_key]
 
-    st.markdown("**1. What did the agent do in this clip?")
+    st.markdown("**1. What did the agent do in this clip?**")
     comp_answer = st.radio("Comprehension Check", comp_options, index=None, label_visibility="collapsed", key=f"comp_{sc['id']}")
 
     st.write("")
-    st.markdown("**2. What is your confirmation preference?")
+    st.markdown("**2. What is your confirmation preference?**")
     st.caption("Mirrors minimal / moderate / significant impact tiers from prior UI-impact taxonomy research")
     confirm_pref = st.radio(
         "Confirmation Preference",
@@ -302,37 +302,37 @@ elif 1 <= current_step <= len(SCENARIOS):
     )
 
     st.write("")
-    st.markdown("**3. Expectation Match:** Did the agent match what you pictured when you gave the instruction?")
+    st.markdown("**3. Did the agent match what you expected when you gave the instruction?**")
     st.caption("1 = Completely Unexpected | 7 = Exactly What I Expected")
     expect = st.radio("Expectation Match", ["1", "2", "3", "4", "5", "6", "7"], index=None, horizontal=True, label_visibility="collapsed", key=f"expect_{sc['id']}")
 
     st.write("")
-    st.markdown("**4. Reversibility:** How easy or difficult is it to undo this action?")
+    st.markdown("**4. How easy is it to undo this action?**")
     st.caption("1 = Impossible to Undo | 7 = Extremely Easy to Undo")
     rev = st.radio("Reversibility", ["1", "2", "3", "4", "5", "6", "7"], index=None, horizontal=True, label_visibility="collapsed", key=f"rev_{sc['id']}")
     
     st.write("")
-    st.markdown("**5. Financial Impact:** What is the level of financial exposure in this action?")
+    st.markdown("**5. What is the level of financial exposure in this action?**")
     st.caption("1 = No Financial Risk | 7 = Severe Financial Loss")
     fin = st.radio("Financial Impact", ["1", "2", "3", "4", "5", "6", "7"], index=None, horizontal=True, label_visibility="collapsed", key=f"fin_{sc['id']}")
     
     st.write("")
-    st.markdown("**6. Privacy Exposure:** How much sensitive personal data or permissions are exposed?")
+    st.markdown("**6. How much sensitive personal data or permissions are exposed?**")
     st.caption("1 = No Sensitive Exposure | 7 = High Sensitive Exposure")
     priv = st.radio("Privacy Exposure", ["1", "2", "3", "4", "5", "6", "7"], index=None, horizontal=True, label_visibility="collapsed", key=f"priv_{sc['id']}")
     
     st.write("")
-    st.markdown("**7. Agent Comfort:** How comfortable are you letting an AI execute this without prior approval?")
+    st.markdown("**7. How comfortable are you letting an AI execute this without prior approval?**")
     st.caption("1 = Completely Uncomfortable | 7 = Completely Comfortable")
     trust = st.radio("Agent Comfort", ["1", "2", "3", "4", "5", "6", "7"], index=None, horizontal=True, label_visibility="collapsed", key=f"trust_{sc['id']}")
 
     st.write("")
-    st.markdown("**8. Execution Confidence:** How confident are you that this action was completed successfully, based on what you saw?")
+    st.markdown("**8. How confident are you that this action was completed successfully, based on what you saw?**")
     st.caption("1 = Not At All Confident | 7 = Completely Confident")
     exec_conf = st.radio("Execution Confidence", ["1", "2", "3", "4", "5", "6", "7"], index=None, horizontal=True, label_visibility="collapsed", key=f"exec_{sc['id']}")
 
     st.write("")
-    st.markdown("**9. Reasoning (optional):** Briefly, why did you choose that confirmation preference?")
+    st.markdown("**9. Reasoning (optional): Briefly, why did you choose that confirmation preference?** (Question 2)")
     reasoning = st.text_area("Reasoning", placeholder="Type a short reason...", label_visibility="collapsed", key=f"reason_{sc['id']}")
 
     st.divider()
