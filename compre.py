@@ -15,14 +15,18 @@ st.set_page_config(
     layout="centered"
 )
 
-
 st.markdown("""
     <style>
-    /* Question labels for radio buttons, sliders, text inputs, etc. */
-    .stRadio label, .stSlider label, .stSelectbox label, .stTextInput label, .stTextArea label {
-        font-size: 18px !important;
+    /* 1. Target main question text for all widgets (Radio, Slider, Selectbox, Inputs) */
+    div[data-testid="stWidgetLabel"] p {
+        font-size: 20px !important;
         font-weight: 600 !important;
-        color: #1F2937;
+        color: #1F2937 !important;
+    }
+
+    /* 2. Target option choice labels (e.g., Radio button choices A, B, C) */
+    div[data-testid="stRadio"] label p {
+        font-size: 17px !important;
     }
     </style>
 """, unsafe_allow_html=True)
