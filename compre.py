@@ -20,10 +20,6 @@ st.markdown('<div id="top-anchor"></div>', unsafe_allow_html=True)
 # Unified CSS for Font Sizes, Mobile Scale Formatting, & UI Components
 st.markdown("""
     <style>
-    div[data-testid="stRadio"] div[role="radio"],
-    div[data-testid="stRadio"] svg {
-        filter: brightness(0) !important;
-    }
     /* 1. Header & Title Sizes */
     h1, h2, h3 {
         font-size: 22px !important;
@@ -37,14 +33,14 @@ st.markdown("""
         font-size: 18px !important;
         font-weight: 600 !important;
     }
-
+ 
     /* 2. Question Labels */
     div[data-testid="stWidgetLabel"] p {
         font-size: 18px !important;
         font-weight: 600 !important;
         color: #1F2937 !important;
     }
-
+ 
     /* 3. ALL STANDARD QUESTIONS: Strict vertical column layout (1 option per row) */
     div[data-testid="stRadio"] > div[role="radiogroup"] {
         display: flex !important;
@@ -54,7 +50,7 @@ st.markdown("""
         width: 100% !important;
         padding: 4px 0 !important;
     }
-
+ 
     /* 4. Base Unselected Option Cards */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label {
         display: flex !important;
@@ -71,7 +67,7 @@ st.markdown("""
         cursor: pointer !important;
         transition: all 0.15s ease-in-out !important;
     }
-
+ 
     /* Option Text (Clean, no background highlight) */
     div[data-testid="stRadio"] label p {
         font-size: 15px !important;
@@ -84,32 +80,45 @@ st.markdown("""
         line-height: 1.35 !important;
         margin: 0 !important;
     }
-
+ 
     /* Hover State */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:hover:not(:has(input:checked)) {
         background-color: rgba(255, 255, 255, 0.08) !important;
         border-color: rgba(255, 255, 255, 0.25) !important;
     }
-
-    /* Completely hide the default radio dot to remove the red color issue */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
-        display: none !important;
+ 
+    /* Recolor (not hide) the native selection dot to the app's blue accent instead of
+       Streamlit's default red/pink theme color. Applied broadly across every possible
+       node type (native input, inline SVG, or BaseWeb's div-based dot) so it works
+       regardless of which one Streamlit is actually rendering under the hood. */
+    div[data-testid="stRadio"] input[type="radio"] {
+        accent-color: #3B82F6 !important;
     }
-
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child,
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child * {
+        accent-color: #3B82F6 !important;
+        fill: #3B82F6 !important;
+        stroke: #3B82F6 !important;
+        border-color: #3B82F6 !important;
+    }
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child > div {
+        background-color: #3B82F6 !important;
+    }
+ 
     /* 5. Selected State Container (Clean Blue Card) */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) {
         background-color: rgba(37, 99, 235, 0.2) !important;
         border: 2px solid #3B82F6 !important;
         box-shadow: 0 0 12px rgba(59, 130, 246, 0.25) !important;
     }
-
+ 
     /* Selected Option Text (White text, normal weight, transparent background) */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) p {
         color: #FFFFFF !important;
         background-color: transparent !important;
         font-weight: 500 !important;
     }
-
+ 
     /* 6. RATING SCALES ONLY (5-point & 7-point scales): Horizontal single row */
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"],
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] {
@@ -119,7 +128,7 @@ st.markdown("""
         gap: 6px !important;                 /* Space between option pills */
         margin: 0 !important;
     }
-
+ 
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"] > label,
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] > label {
         flex: 1 1 0% !important;              /* Distributes rating numbers evenly */
@@ -139,7 +148,7 @@ st.markdown("""
         white-space: nowrap !important;
         margin: 0 !important;
     }
-
+ 
     /* Custom class for front page title */
     .main-title, .main-title p {
         font-size: 34px !important;
@@ -147,6 +156,10 @@ st.markdown("""
         line-height: 1.2 !important;
         margin-bottom: 15px !important;
     }
+ 
+    .stVideo { border-radius: 12px; overflow: hidden; box-shadow: 0px 4px 12px rgba(0,0,0,0.15); }
+    .scenario-card { background-color: #f8f9fa; padding: 18px; border-radius: 10px; margin-bottom: 20px; border-left: 5px solid #0066cc; }
+    .stButton>button { width: 100%; border-radius: 8px; font-weight: bold; background-color: #0066cc; color: white; }
     </style>
 """, unsafe_allow_html=True)
 # ==========================================
