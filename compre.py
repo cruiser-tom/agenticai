@@ -129,27 +129,30 @@ st.markdown("""
         line-height: 1.2 !important;
         margin-bottom: 15px !important;
     }
-        /* 1. Hover Effect (when mouse hovers over an option) */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label:hover {
-        background-color: rgba(59, 130, 246, 0.15) !important;  /* Soft blue glow */
-        border-color: #3B82F6 !important;
+        /* 1. Hover Effect (Only applies to unselected buttons) */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label:not(:has(input:checked)):hover {
+        background-color: rgba(128, 128, 128, 0.2) !important;  /* Subtle gray hover */
+        border-color: #9CA3AF !important;
     }
     
-    /* 2. Active / Click Effect (instant visual feedback when tapped/clicked) */
+    /* 2. Click/Tap Down Effect (Instant press animation) */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:active {
-        background-color: #2563EB !important;                   /* Solid blue pulse */
-        border-color: #2563EB !important;
-        transform: scale(0.98);                                 /* Subtle press-down animation */
-        transition: transform 0.05s ease;
+        transform: scale(0.95) !important;                      /* Noticeable shrink on tap */
+        transition: transform 0.05s ease !important;
     }
     
-    /* 3. Selected State (stays highlighted blue when chosen) */
+    /* 3. Selected State (Solid blue fill when chosen) */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) {
-        background-color: rgba(59, 130, 246, 0.2) !important;   /* persistent light blue tint */
-        border: 2px solid #3B82F6 !important;                   /* distinct blue outline */
+        background-color: #2563EB !important;                   /* Solid bold blue */
+        border-color: #1D4ED8 !important;
     }
-    </style>
     
+    /* 4. Force text inside selected button to turn white */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) p {
+        color: #FFFFFF !important;
+        font-weight: 700 !important;
+    }
+        
 """, unsafe_allow_html=True)
 
 # ==========================================
