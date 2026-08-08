@@ -157,7 +157,7 @@ if 1 <= current_step <= len(SCENARIOS):
 
 # --- STEP 0: WELCOME & BRIEF OVERVIEW ---
 if current_step == 0:
-    st.markdown("<h1 style='font-size: 28px; font-weight: 700; color: #1F2937; margin-bottom: 15px;'>🤖 AI Agent Interaction Study</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='font-size: 40px; font-weight: 700; margin-bottom: 15px;'>🤖 Agentic AI Interaction Study</h1>", unsafe_allow_html=True)
     st.subheader("Participant Information")
     st.markdown("""
     Welcome! In this brief study, you will watch short recordings of an **Autonomous Mobile AI Agent** performing requested actions on a mobile device.
