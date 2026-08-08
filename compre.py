@@ -283,18 +283,18 @@ elif 1 <= current_step <= len(SCENARIOS):
         st.session_state[options_key] = opts
     comp_options = st.session_state[options_key]
 
-    st.markdown("**1. Comprehension Check:** What did the agent do in this clip?")
+    st.markdown("**1. What did the agent do in this clip?")
     comp_answer = st.radio("Comprehension Check", comp_options, index=None, label_visibility="collapsed", key=f"comp_{sc['id']}")
 
     st.write("")
-    st.markdown("**2. Confirmation Preference:** Before this action is completed, what would you want?")
+    st.markdown("**2. What is your confirmation preference?")
     st.caption("Mirrors minimal / moderate / significant impact tiers from prior UI-impact taxonomy research")
     confirm_pref = st.radio(
         "Confirmation Preference",
         [
-            "No confirmation needed — the agent can do this on its own",
+            "No confirmation needed, the agent can do this on its own",
             "I'd want a quick confirmation or summary first",
-            "No automation — I would want to do this myself"
+            "I would want to do this myself"
         ],
         index=None,
         label_visibility="collapsed",
