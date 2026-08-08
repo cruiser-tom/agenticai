@@ -146,7 +146,7 @@ def scroll_to_top():
         unsafe_allow_html=True,
     )
 
-scroll_to_top()
+
 
 # ==========================================
 # 3. SESSION STATE INITIALIZATION
@@ -211,7 +211,7 @@ if current_step == 0:
     
     if st.button("Start Study 🚀", type="primary"):
         st.session_state.step = 1
-        scroll_to_top()
+        st.session_state.should_scroll = True
         st.rerun()
 
 # --- STEPS 1 to 4: SCENARIOS ---
@@ -316,7 +316,7 @@ elif 1 <= current_step <= len(SCENARIOS):
             st.session_state.responses[f"{prefix}_reasoning"] = reasoning.strip() if reasoning else ""
             
             st.session_state.step += 1
-            scroll_to_top()
+            st.session_state.should_scroll = True
             st.rerun()
 
 # --- STEP 5: DEMOGRAPHICS ---
@@ -366,7 +366,7 @@ elif current_step == len(SCENARIOS) + 1:
             # REPLACE WITH THIS
             if save_data_to_supabase(st.session_state.responses):
                 st.session_state.step += 1
-                scroll_to_top()
+                st.session_state.should_scroll
                 st.rerun()
 
 # --- STEP 6: SUCCESS CONFIRMATION & REWARD CODE ---
