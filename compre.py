@@ -41,26 +41,25 @@ st.markdown("""
         color: #1F2937 !important;
     }
 
-    /* 3. DEFAULT RADIO GROUP CONTAINER: Responsive flex-wrap row */
+    /* 3. ALL STANDARD QUESTIONS: Strict vertical column layout (1 option per row) */
     div[data-testid="stRadio"] > div[role="radiogroup"] {
         display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: wrap !important;
+        flex-direction: column !important;   /* Forces vertical column stacking */
+        flex-wrap: nowrap !important;
         gap: 8px !important;
         width: 100% !important;
         padding: 4px 0 !important;
     }
 
-    /* 4. OPTION CARDS / PILLS: Responsive sizing based on text length */
+    /* 4. Full-width Option Cards */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label {
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
         justify-content: flex-start !important;
-        flex: 1 1 130px !important;            /* Short pills sit side-by-side; long sentences expand to 100% width */
-        max-width: 100% !important;
+        width: 100% !important;               /* Takes 100% width of screen */
         box-sizing: border-box !important;
-        padding: 10px 14px !important;
+        padding: 12px 14px !important;
         margin: 0 !important;
         background-color: rgba(128, 128, 128, 0.08) !important;
         border: 1px solid rgba(128, 128, 128, 0.2) !important;
@@ -68,35 +67,37 @@ st.markdown("""
         cursor: pointer !important;
     }
 
-    /* 5. TEXT WRAPPING: Enables natural line wrapping for sentence questions without mid-word breaks */
+    /* 5. Text Wrapping for Sentences & Short Choices */
     div[data-testid="stRadio"] label p {
         font-size: 15px !important;
         font-weight: 500 !important;
-        white-space: normal !important;        /* Wraps sentences onto new lines to prevent overflow */
-        word-break: normal !important;         /* Prevents breaking words or hyphens mid-word */
-        overflow-wrap: break-word !important;  /* Wraps strictly at space boundaries */
+        white-space: normal !important;        /* Wraps sentence options onto new lines */
+        word-break: normal !important;
+        overflow-wrap: break-word !important;
         line-height: 1.35 !important;
         margin: 0 !important;
     }
 
-    /* 6. RADIO CIRCLE ALIGNMENT */
+    /* Radio Dot Alignment */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
         margin-right: 10px !important;
         margin-left: 0 !important;
         margin-bottom: 0 !important;
-        flex-shrink: 0 !important;            /* Prevents radio circle from squishing when text wraps */
+        flex-shrink: 0 !important;
     }
 
-    /* 7. LIKERT SCALES (1–5 & 1–7): Force 100% single-row horizontal distribution */
+    /* 6. RATING SCALES ONLY (5-point & 7-point scales): Horizontal single row */
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"],
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] {
+        flex-direction: row !important;      /* Forces horizontal row for scales only */
         flex-wrap: nowrap !important;
         gap: 6px !important;
     }
 
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"] > label,
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] > label {
-        flex: 1 1 0% !important;              /* Distributes rating numbers evenly across the container */
+        flex: 1 1 0% !important;              /* Distributes rating numbers evenly */
+        width: auto !important;
         min-width: 0 !important;
         justify-content: center !important;
         padding: 10px 2px !important;
