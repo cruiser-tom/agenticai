@@ -20,6 +20,10 @@ st.markdown('<div id="top-anchor"></div>', unsafe_allow_html=True)
 # Unified CSS for Font Sizes, Mobile Scale Formatting, & UI Components
 st.markdown("""
     <style>
+    div[data-testid="stRadio"] div[role="radio"],
+    div[data-testid="stRadio"] svg {
+        filter: brightness(0) !important;
+    }
     /* 1. Header & Title Sizes */
     h1, h2, h3 {
         font-size: 22px !important;
