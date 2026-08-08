@@ -144,13 +144,12 @@ st.markdown("""
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:active * {
            /* Bright Blue on tap/press */
         border-color: #1D4ED8 !important;
-        filter: none !important;                /* Removes hover dimming so blue pops */
+        filter: none !important;               
         color: #FFFFFF !important;
     }
     
     /* 4. Selected State: Remains Red after release */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) {
-        background-color: #DC2626 !important;   /* Solid Red background */
         border-color: #B91C1C !important;
     }
     
