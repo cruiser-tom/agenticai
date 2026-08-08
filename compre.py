@@ -143,11 +143,10 @@ elif 1 <= current_step <= len(SCENARIOS):
         st.write("**AI Agent Executing Action:**")
         col_left, col_mid, col_right = st.columns([1, 1.5, 1])
         with col_mid:
-            if os.path.exists(sc["video_path"]):
-                with open(sc["video_path"], "rb") as video_file:
-                    st.video(video_file.read(), loop=True, autoplay=True, muted=True)
-            else:
-                st.warning(f"Video file `{sc['video_path']}` not found.")
+            try:
+                st.video(sc["video_path"], loop=True, autoplay=True, muted=True)
+            except Exception as e:
+                st.warning(f"Unable to load video stream: {e}")
                 
     st.divider()
     st.subheader("Evaluate the Agent's Action")
