@@ -15,6 +15,18 @@ st.set_page_config(
     layout="centered"
 )
 
+
+st.markdown("""
+    <style>
+    /* Question labels for radio buttons, sliders, text inputs, etc. */
+    .stRadio label, .stSlider label, .stSelectbox label, .stTextInput label, .stTextArea label {
+        font-size: 19px !important;
+        font-weight: 600 !important;
+        color: #1F2937;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 st.markdown("""
     <style>
     .stVideo { border-radius: 12px; overflow: hidden; box-shadow: 0px 4px 12px rgba(0,0,0,0.15); }
