@@ -41,76 +41,69 @@ st.markdown("""
         color: #1F2937 !important;
     }
 
-    /* 3. DEFAULT TEXT RADIO OPTIONS (e.g., Q1 & Q2): Stack vertically into full-width cards */
+    /* 3. DEFAULT RADIO GROUPS: Lay out options horizontally in a row */
     div[data-testid="stRadio"] > div[role="radiogroup"] {
         display: flex !important;
-        flex-direction: column !important;   
-        gap: 8px !important;
+        flex-direction: row !important;      /* Aligns options side-by-side in a row */
+        flex-wrap: wrap !important;          /* Wraps neatly on smaller screens */
+        align-items: center !important;
+        gap: 10px !important;                /* Space between horizontal pill cards */
         width: 100% !important;
+        padding: 4px 0 !important;
     }
 
+    /* 4. Format each option as a horizontal pill button */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label {
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
-        justify-content: flex-start !important;
-        width: 100% !important;              
-        padding: 12px 14px !important;
+        justify-content: center !important;
+        padding: 8px 16px !important;        /* Comfortable padding inside each box */
         margin: 0 !important;
         background-color: rgba(128, 128, 128, 0.08) !important;
         border: 1px solid rgba(128, 128, 128, 0.2) !important;
         border-radius: 8px !important;
         cursor: pointer !important;
+        flex: 0 1 auto !important;           /* Sizes box according to content length */
+    }
+
+    /* 5. Radio dot and label text alignment */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
+        margin-right: 8px !important;
+        margin-left: 0 !important;
+        margin-bottom: 0 !important;
+        flex-shrink: 0 !important;
     }
 
     div[data-testid="stRadio"] > div[role="radiogroup"] > label p {
         font-size: 15px !important;
         font-weight: 500 !important;
-        white-space: normal !important;
-        word-break: normal !important;
-        overflow-wrap: break-word !important;
-        line-height: 1.3 !important;
+        white-space: nowrap !important;
         margin: 0 !important;
+        line-height: 1 !important;
     }
 
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
-        margin-right: 10px !important;
-        margin-bottom: 0 !important;
-        flex-shrink: 0 !important;
-    }
-
-    /* 4. 1-7 LIKERT SCALES ONLY (Radio groups with exactly 7 options): Keep horizontal full-width row */
+    /* 6. EVEN EXPANSION FOR SCALES (5-point & 7-point scales): Stretch across full width */
+    div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"],
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] {
-        flex-direction: row !important;
         flex-wrap: nowrap !important;
-        justify-content: space-between !important;
-        align-items: stretch !important;
-        gap: 8px !important;
-        padding: 6px 0 !important;
     }
 
+    div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"] > label,
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] > label {
-        flex: 1 1 0% !important;             /* Distributes 7 items evenly across row */
-        min-width: 0 !important;
-        width: auto !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        justify-content: center !important;
+        flex: 1 1 0% !important;             /* Stretches rating scale numbers evenly */
         padding: 10px 4px !important;
         gap: 6px !important;
     }
 
+    div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"] > label p,
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] > label p {
         font-size: 14px !important;
         font-weight: 600 !important;
         text-align: center !important;
     }
 
-    div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] > label > div:first-child {
-        margin-right: 0 !important;
-    }
-
-    /* Custom class for front page title */
+    /* Custom class for the front page title */
     .main-title, .main-title p {
         font-size: 34px !important;
         font-weight: 700 !important;
