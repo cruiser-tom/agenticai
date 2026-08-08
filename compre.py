@@ -20,11 +20,6 @@ st.markdown('<div id="top-anchor"></div>', unsafe_allow_html=True)
 # Unified CSS for Font Sizes, Mobile Scale Formatting, & UI Components
 st.markdown("""
     <style>
-        /* Completely hide the default radio dot/circle */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
-        display: none !important;
-    }
-    
     /* 1. Header & Title Sizes */
     h1, h2, h3 {
         font-size: 22px !important;
@@ -73,7 +68,7 @@ st.markdown("""
         transition: all 0.15s ease-in-out !important;
     }
 
-  /* 1. Option Text (Clean, no background highlight) */
+    /* Option Text (Clean, no background highlight) */
     div[data-testid="stRadio"] label p {
         font-size: 15px !important;
         font-weight: 500 !important;
@@ -86,34 +81,35 @@ st.markdown("""
         margin: 0 !important;
     }
 
-    /* 2. Hover State */
+    /* Hover State */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:hover:not(:has(input:checked)) {
         background-color: rgba(255, 255, 255, 0.08) !important;
         border-color: rgba(255, 255, 255, 0.25) !important;
     }
 
-    /* 3. Target ONLY the Radio Circle Dot */
+    /* Force Radio Dot to Blue when Selected */
     div[data-testid="stRadio"] div[role="radio"][aria-checked="true"],
     div[data-testid="stRadio"] label:has(input:checked) div[role="radio"] {
         background-color: #3B82F6 !important;
         border-color: #3B82F6 !important;
+        filter: hue-rotate(215deg) saturate(2) !important;
     }
 
-    /* 4. Selected State Container */
+    /* Selected State Container */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) {
         background-color: rgba(37, 99, 235, 0.2) !important;
         border: 2px solid #3B82F6 !important;
         box-shadow: 0 0 12px rgba(59, 130, 246, 0.25) !important;
     }
 
-    /* 5. Selected Option Text (White text, normal weight, transparent background) */
+    /* Selected Option Text (White text, normal weight, transparent background) */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) p {
         color: #FFFFFF !important;
         background-color: transparent !important;
         font-weight: 500 !important;
     }
 
-    /* 6. Radio Dot Alignment */
+    /* Radio Dot Alignment */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
         margin-right: 12px !important;
         margin-left: 0 !important;
@@ -121,6 +117,7 @@ st.markdown("""
         flex-shrink: 0 !important;
         background-color: transparent !important;
     }
+
     /* 6. RATING SCALES ONLY (5-point & 7-point scales): Horizontal single row */
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"],
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] {
@@ -157,6 +154,7 @@ st.markdown("""
         margin-left: 0 !important;
         margin-bottom: 0 !important;
     }
+
     /* Custom class for front page title */
     .main-title, .main-title p {
         font-size: 34px !important;
@@ -164,12 +162,8 @@ st.markdown("""
         line-height: 1.2 !important;
         margin-bottom: 15px !important;
     }
-
-    
-   
-
+    </style>
 """, unsafe_allow_html=True)
-
 # ==========================================
 # 2. EXPERIMENTAL SCENARIOS DEFINITION
 # ==========================================
