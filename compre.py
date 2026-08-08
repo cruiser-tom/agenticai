@@ -17,7 +17,6 @@ st.set_page_config(
 
 st.markdown('<div id="top-anchor"></div>', unsafe_allow_html=True)
 
-# Unified CSS for Font Sizes, Mobile Scale Formatting, & UI Components
 st.markdown("""
     <style>
     /* 1. Header & Title Sizes */
@@ -88,9 +87,11 @@ st.markdown("""
     }
  
     /* Recolor (not hide) the native selection dot to the app's blue accent instead of
-       Streamlit's default red/pink theme color. Applied broadly across every possible
-       node type (native input, inline SVG, or BaseWeb's div-based dot) so it works
-       regardless of which one Streamlit is actually rendering under the hood. */
+       Streamlit's default red/pink theme color. Applied to EVERY descendant of the
+       icon wrapper, at any nesting depth, across every color-bearing CSS property
+       (fill/stroke for SVGs, background-color for div-based dots, color for
+       currentColor-based icons, accent-color for native inputs) — because Streamlit's
+       actual dot markup can be nested more than one level deep. */
     div[data-testid="stRadio"] input[type="radio"] {
         accent-color: #3B82F6 !important;
     }
@@ -100,8 +101,7 @@ st.markdown("""
         fill: #3B82F6 !important;
         stroke: #3B82F6 !important;
         border-color: #3B82F6 !important;
-    }
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child > div {
+        color: #3B82F6 !important;
         background-color: #3B82F6 !important;
     }
  
