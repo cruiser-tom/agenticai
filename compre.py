@@ -123,6 +123,7 @@ if current_step == 0:
     * **Task:** Evaluate 4 unique scenarios using rating scales.
     * **Duration:** ~4 to 6 minutes.
     * **Anonymity:** All responses are completely anonymous.
+    
     P.S: This survey contains Karma to get free survey responses at SurveySwap.io
     """)
     st.divider()
