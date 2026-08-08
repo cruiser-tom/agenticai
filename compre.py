@@ -120,45 +120,30 @@ SCENARIOS = [
     }
 ]
 def scroll_to_top():
-    """Forces mobile and desktop viewports to scroll to top after rendering."""
-    components.html(
+    st.markdown(
         """
-        <script>
-            function forceScrollTop() {
-                try {
-                    var pDoc = window.parent.document;
-                    
-                    // 1. Target all possible Streamlit scroll containers on mobile
-                    var targets = [
-                        pDoc.querySelector('section.main'),
-                        pDoc.querySelector('[data-testid="stAppViewContainer"]'),
-                        pDoc.querySelector('.stApp'),
-                        pDoc.documentElement,
-                        pDoc.body
+        <svg onload="
+            (function() {
+                function resetScroll() {
+                    var containers = [
+                        document.querySelector('section.main'),
+                        document.querySelector('[data-testid=stAppViewContainer]'),
+                        document.querySelector('.stApp'),
+                        document.documentElement,
+                        document.body
                     ];
-
-                    targets.forEach(function(el) {
-                        if (el) {
-                            el.scrollTop = 0;
-                        }
+                    containers.forEach(function(c) {
+                        if (c) c.scrollTop = 0;
                     });
-
-                    // 2. Native parent window scroll
-                    window.parent.scrollTo(0, 0);
-                } catch (e) {
-                    console.log("Scroll attempt error:", e);
+                    window.scrollTo(0, 0);
                 }
-            }
-
-            // Run immediately
-            forceScrollTop();
-
-            // Run again after 100ms and 300ms to catch mobile touch-inertia and DOM rerenders
-            setTimeout(forceScrollTop, 100);
-            setTimeout(forceScrollTop, 300);
-        </script>
+                resetScroll();
+                setTimeout(resetScroll, 100);
+                setTimeout(resetScroll, 300);
+            })();
+        " style="display:none;"></svg>
         """,
-        height=0,
+        unsafe_allow_html=True,
     )
 
 scroll_to_top()
