@@ -119,7 +119,7 @@ SCENARIOS = [
         "distractors": ["Moved a file into a different folder", "Shared a file with another user"]
     }
 ]
-scroll_to_top()
+
 # ==========================================
 # 3. SESSION STATE INITIALIZATION
 # ==========================================
