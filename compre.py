@@ -40,34 +40,44 @@ st.markdown("""
         color: #1F2937 !important;
     }
 
-    /* 3. Force 1-7 rating scale radio buttons onto a single horizontal line on mobile */
+    /* 3. Force 1-7 rating scale radio buttons onto a single horizontal row */
     div[data-testid="stRadio"] > div[role="radiogroup"] {
         flex-direction: row !important;
-        flex-wrap: nowrap !important;         /* Prevents wrapping to next line */
+        flex-wrap: nowrap !important;
         justify-content: space-between !important;
-        gap: 2px !important;                  /* Reduces spacing between 1-7 buttons */
+        gap: 4px !important;               /* Creates clear spacing between options */
         width: 100% !important;
     }
 
-    /* 4. Adjust padding for each radio button choice to fit 7 columns */
+    /* 4. Convert each option into a pill-card with Circle on TOP, Number below */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label {
-        flex: 1 1 auto !important;
-        min-width: 0 !important;
-        padding: 4px 2px !important;
-        margin: 0 !important;
+        flex: 1 1 0 !important;
+        display: flex !important;
+        flex-direction: column !important; /* Stacks radio circle above the text */
+        align-items: center !important;
         justify-content: center !important;
+        background-color: rgba(128, 128, 128, 0.08) !important; /* Works in dark & light themes */
+        border: 1px solid rgba(128, 128, 128, 0.2) !important;
+        border-radius: 8px !important;
+        padding: 8px 0px 6px 0px !important;
+        margin: 0 !important;
+        cursor: pointer !important;
     }
 
-    /* 5. Choice text styling (numbers 1-7) */
+    /* 5. Remove right-side margin on the radio circle */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
+        margin-right: 0px !important;
+        margin-bottom: 4px !important;
+    }
+
+    /* 6. Center and format the number text below the circle */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label p {
-        font-size: 15px !important;          /* Slightly smaller size so 1-7 don't clip */
+        font-size: 14px !important;
+        font-weight: 600 !important;
         text-align: center !important;
+        margin: 0 !important;
+        line-height: 1 !important;
     }
-
-    /* 6. Custom Card, Video, and Button Styles */
-    .stVideo { border-radius: 6px; overflow: hidden; box-shadow: 0px 4px 12px rgba(0,0,0,0.15); }
-    .scenario-card { background-color: #f8f9fa; padding: 10px; border-radius: 6px; margin-bottom: 10px; border-left: 5px solid #0066cc; }
-    .stButton>button { width: 100%; border-radius: 6px; font-weight: bold; background-color: #0066cc; color: white; }
 
     /* Custom class for the front page title and its internal paragraph tags */
     .main-title, .main-title p {
