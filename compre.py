@@ -116,14 +116,8 @@ st.markdown("""
         line-height: 1 !important;
     }
 
-    /* 6. Center and format the number text below the circle */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label p {
-        font-size: 14px !important;
-        font-weight: 600 !important;
-        text-align: center !important;
-        margin: 0 !important;
-        line-height: 1 !important;
-    }
+
+
 
     /* Custom class for the front page title and its internal paragraph tags */
     .main-title, .main-title p {
