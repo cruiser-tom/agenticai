@@ -14,6 +14,7 @@ st.set_page_config(
     page_icon="🤖",
     layout="centered"
 )
+st.markdown('<div id="top-anchor"></div>', unsafe_allow_html=True)
 
 # Unified CSS for Font Sizes, Mobile Scale Formatting, & UI Components
 st.markdown("""
@@ -366,7 +367,7 @@ elif current_step == len(SCENARIOS) + 1:
             # REPLACE WITH THIS
             if save_data_to_supabase(st.session_state.responses):
                 st.session_state.step += 1
-                st.session_state.should_scroll
+                st.session_state.should_scroll = True
                 st.rerun()
 
 # --- STEP 6: SUCCESS CONFIRMATION & REWARD CODE ---
@@ -392,19 +393,38 @@ if st.session_state.should_scroll:
     components.html(
         """
         <script>
-            setTimeout(function() {
-                const container = window.parent.document.querySelector('[data-testid="stAppViewContainer"]') ||
-                                  window.parent.document.querySelector('section.main') ||
-                                  window.parent;
-                if (container) {
-                    container.scrollTop = 0;
-                }
+            function forceScrollToTop() {
+                const parent = window.parent;
+                if (!parent) return;
+
+                // 1. Force global window scroll
+                parent.scrollTo({top: 0, behavior: 'instant'});
                 
-                const topAnchor = window.parent.document.getElementById('top-anchor');
+                // 2. Force scroll on all possible Streamlit containers (crucial for mobile)
+                const containers = [
+                    parent.document.querySelector('[data-testid="stAppViewContainer"]'),
+                    parent.document.querySelector('section.main'),
+                    parent.document.documentElement,
+                    parent.document.body
+                ];
+                
+                containers.forEach(container => {
+                    if (container) {
+                        container.scrollTop = 0;
+                    }
+                });
+
+                // 3. Target the specific anchor point
+                const topAnchor = parent.document.getElementById('top-anchor');
                 if (topAnchor) {
                     topAnchor.scrollIntoView({ behavior: 'instant', block: 'start' });
                 }
-            }, 150);
+            }
+
+            // Fire multiple times to beat mobile rendering delays
+            setTimeout(forceScrollToTop, 50);
+            setTimeout(forceScrollToTop, 150);
+            setTimeout(forceScrollToTop, 300);
         </script>
         """,
         height=0
