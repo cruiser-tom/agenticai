@@ -92,7 +92,7 @@ st.markdown("""
         flex-direction: row !important;      /* Forces horizontal row for scales only */
         flex-wrap: nowrap !important;
         padding: 10px 10px !important;
-        gap: 8px !important;                
+        gap: 10px !important;                
         margin: 0 !important;
     }
 
