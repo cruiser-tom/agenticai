@@ -89,30 +89,39 @@ st.markdown("""
     }
  
     /* Recolor the selection dot to the app's blue accent instead of Streamlit's
-       default red/pink — but ONLY for the checked/selected option, matching the
-       dot's actual structural position: a div sibling immediately BEFORE the
-       option's text container (stMarkdownContainer). */
+       default red/pink — but ONLY for the checked/selected option. Uses a
+       ring-and-center pattern for contrast: the outer circle is blue, the inner
+       dot stays white, matching the standard high-contrast selected-radio look
+       (rather than a flat solid-blue circle, which reads softer against a
+       similarly-dark blue card background). */
     div[data-testid="stRadio"] input[type="radio"] {
         accent-color: #3B82F6 !important;
     }
-    div[data-testid="stRadio"] label:has(input:checked) div:has(+ [data-testid="stMarkdownContainer"]),
-    div[data-testid="stRadio"] label:has(input:checked) div:has(+ [data-testid="stMarkdownContainer"]) * {
+    div[data-testid="stRadio"] label:has(input:checked) div:has(+ [data-testid="stMarkdownContainer"]) {
         background-color: #3B82F6 !important;
         background-image: none !important;
         box-shadow: none !important;
         fill: #3B82F6 !important;
-        color: #3B82F6 !important;
+    }
+    div[data-testid="stRadio"] label:has(input:checked) div:has(+ [data-testid="stMarkdownContainer"]) * {
+        background-color: #FFFFFF !important;
+        background-image: none !important;
+        box-shadow: none !important;
+        fill: #FFFFFF !important;
     }
     /* Broad fallback in case the sibling structure above ever changes — also
-       scoped to checked options only */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) > div:first-child,
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) > div:first-child * {
+       scoped to checked options only, same ring/center contrast pattern */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) > div:first-child {
         accent-color: #3B82F6 !important;
-        fill: #3B82F6 !important;
-        stroke: #3B82F6 !important;
         border-color: #3B82F6 !important;
-        color: #3B82F6 !important;
         background-color: #3B82F6 !important;
+    }
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) > div:first-child * {
+        accent-color: #FFFFFF !important;
+        fill: #FFFFFF !important;
+        stroke: #FFFFFF !important;
+        border-color: #FFFFFF !important;
+        background-color: #FFFFFF !important;
     }
  
     /* 5. Selected State Container (Clean Blue Card) */
