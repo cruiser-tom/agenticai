@@ -129,30 +129,37 @@ st.markdown("""
         line-height: 1.2 !important;
         margin-bottom: 15px !important;
     }
-        /* 1. Hover Effect (Only applies to unselected buttons) */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label:not(:has(input:checked)):hover {
-        background-color: rgba(128, 128, 128, 0.2) !important;  /* Subtle gray hover */
-        border-color: #9CA3AF !important;
+         /* 1. Base Smooth Transition */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label {
+        transition: background-color 0.15s ease, filter 0.15s ease !important;
     }
     
-    /* 2. Click/Tap Down Effect (Instant press animation) */
+    /* 2. Hover Effect: Dims the color slightly, automatically restores on unhover */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label:hover {
+        filter: brightness(0.8) !important;    /* Dims button color by 20% */
+    }
+    
+    /* 3. Active Click Effect: Momentarily turns blue while being pressed */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:active {
-        transform: scale(0.95) !important;                      /* Noticeable shrink on tap */
-        transition: transform 0.05s ease !important;
-    }
-    
-    /* 3. Selected State (Solid blue fill when chosen) */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) {
-        background-color: #2563EB !important;                   /* Solid bold blue */
+        background-color: #2563EB !important;   /* Bright Blue on press */
         border-color: #1D4ED8 !important;
+        filter: brightness(1) !important;
     }
     
-    /* 4. Force text inside selected button to turn white */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label:active p {
+        color: #FFFFFF !important;
+    }
+    
+    /* 4. Selected State: Remains bold Red once clicked/selected */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) {
+        background-color: #DC2626 !important;   /* Solid Red background */
+        border-color: #B91C1C !important;
+    }
+    
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) p {
         color: #FFFFFF !important;
         font-weight: 700 !important;
     }
-        
 """, unsafe_allow_html=True)
 
 # ==========================================
