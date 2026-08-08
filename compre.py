@@ -17,19 +17,39 @@ st.set_page_config(
 
 st.markdown("""
     <style>
-    /* 1. Target main question text for all widgets (Radio, Slider, Selectbox, Inputs) */
+    /* 1. Target main question text */
     div[data-testid="stWidgetLabel"] p {
-        font-size: 20px !important;
+        font-size: 19px !important;
         font-weight: 600 !important;
         color: #1F2937 !important;
     }
 
-    /* 2. Target option choice labels (e.g., Radio button choices A, B, C) */
-    div[data-testid="stRadio"] label p {
-        font-size: 17px !important;
+    /* 2. Force 1-7 rating scale radio buttons onto a single horizontal line on mobile */
+    div[data-testid="stRadio"] > div[role="radiogroup"] {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;         /* Prevents wrapping to next line */
+        justify-content: space-between !important;
+        gap: 2px !important;                  /* Reduces spacing between 1-7 buttons */
+        width: 100% !important;
+    }
+
+    /* 3. Adjust padding for each radio button choice to fit 7 columns */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        padding: 4px 2px !important;
+        margin: 0 !important;
+        justify-content: center !important;
+    }
+
+    /* 4. Choice text styling (numbers 1-7) */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label p {
+        font-size: 15px !important;          /* Slightly smaller size so 1-7 don't clip */
+        text-align: center !important;
     }
     </style>
 """, unsafe_allow_html=True)
+
 
 st.markdown("""
     <style>
