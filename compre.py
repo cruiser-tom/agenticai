@@ -29,9 +29,9 @@ st.markdown("""
 
 st.markdown("""
     <style>
-    .stVideo { border-radius: 12px; overflow: hidden; box-shadow: 0px 4px 12px rgba(0,0,0,0.15); }
-    .scenario-card { background-color: #f8f9fa; padding: 18px; border-radius: 10px; margin-bottom: 20px; border-left: 5px solid #0066cc; }
-    .stButton>button { width: 100%; border-radius: 8px; font-weight: bold; background-color: #0066cc; color: white; }
+    .stVideo { border-radius: 5px; overflow: hidden; box-shadow: 0px 4px 12px rgba(0,0,0,0.15); }
+    .scenario-card { background-color: #f8f9fa; padding: 5px; border-radius: 5px; margin-bottom: 5px; border-left: 5px solid #0066cc; }
+    .stButton>button { width: 100%; border-radius: 5px; font-weight: bold; background-color: #0066cc; color: white; }
     </style>
 """, unsafe_allow_html=True)
 
