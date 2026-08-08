@@ -68,7 +68,7 @@ st.markdown("""
         transition: all 0.15s ease-in-out !important;
     }
 
-    /* Unselected Option Text */
+   /* Unselected Option Text */
     div[data-testid="stRadio"] label p {
         font-size: 15px !important;
         font-weight: 500 !important;
@@ -85,12 +85,15 @@ st.markdown("""
         background-color: rgba(255, 255, 255, 0.08) !important;
         border-color: rgba(255, 255, 255, 0.25) !important;
     }
-        /* Force inner radio dot to blue when selected */
+
+    /* Force inner radio dot to blue when selected (includes SVG fill support) */
     div[data-testid="stRadio"] label input[type="radio"]:checked + div,
     div[data-testid="stRadio"] label:has(input:checked) div[role="radio"],
-    div[data-testid="stRadio"] label:has(input:checked) > div:first-child {
+    div[data-testid="stRadio"] label:has(input:checked) > div:first-child,
+    div[data-testid="stRadio"] label:has(input:checked) > div:first-child * {
         background-color: #3B82F6 !important;
         border-color: #3B82F6 !important;
+        fill: #3B82F6 !important;
         accent-color: #3B82F6 !important;
     }
 
@@ -113,7 +116,6 @@ st.markdown("""
         margin-bottom: 0 !important;
         flex-shrink: 0 !important;
     }
-
     /* 6. RATING SCALES ONLY (5-point & 7-point scales): Horizontal single row */
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"],
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] {
