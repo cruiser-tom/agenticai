@@ -129,7 +129,27 @@ st.markdown("""
         line-height: 1.2 !important;
         margin-bottom: 15px !important;
     }
+        /* 1. Hover Effect (when mouse hovers over an option) */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label:hover {
+        background-color: rgba(59, 130, 246, 0.15) !important;  /* Soft blue glow */
+        border-color: #3B82F6 !important;
+    }
+    
+    /* 2. Active / Click Effect (instant visual feedback when tapped/clicked) */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label:active {
+        background-color: #2563EB !important;                   /* Solid blue pulse */
+        border-color: #2563EB !important;
+        transform: scale(0.98);                                 /* Subtle press-down animation */
+        transition: transform 0.05s ease;
+    }
+    
+    /* 3. Selected State (stays highlighted blue when chosen) */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) {
+        background-color: rgba(59, 130, 246, 0.2) !important;   /* persistent light blue tint */
+        border: 2px solid #3B82F6 !important;                   /* distinct blue outline */
+    }
     </style>
+    
 """, unsafe_allow_html=True)
 
 # ==========================================
