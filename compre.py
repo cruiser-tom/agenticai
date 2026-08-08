@@ -60,7 +60,7 @@ st.markdown("""
         background-color: var(--background-secondary-color, rgba(128, 128, 128, 0.05)) !important;
         border: 1px solid rgba(128, 128, 128, 0.15) !important;
         border-radius: 8px !important;
-        padding: 8px 0px !important;
+        padding: 5px 5px !important;
         margin: 0 !important;
         min-width: 0 !important;
         cursor: pointer !important;
