@@ -51,36 +51,56 @@ st.markdown("""
         padding: 4px 0 !important;
     }
 
-    /* 4. Full-width Option Cards */
+    /* 4. Base Unselected Option Cards */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label {
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
         justify-content: flex-start !important;
-        width: 100% !important;               /* Takes 100% width of screen */
+        width: 100% !important;
         box-sizing: border-box !important;
-        padding: 12px 14px !important;
+        padding: 14px 16px !important;
         margin: 0 !important;
-        background-color: rgba(128, 128, 128, 0.08) !important;
-        border: 1px solid rgba(128, 128, 128, 0.2) !important;
-        border-radius: 8px !important;
+        background-color: rgba(255, 255, 255, 0.04) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        border-radius: 10px !important;
         cursor: pointer !important;
+        transition: all 0.15s ease-in-out !important;
     }
 
-    /* 5. Text Wrapping for Sentences & Short Choices */
+    /* Unselected Option Text */
     div[data-testid="stRadio"] label p {
         font-size: 15px !important;
         font-weight: 500 !important;
-        white-space: normal !important;        /* Wraps sentence options onto new lines */
+        color: #E5E7EB !important;
+        white-space: normal !important;
         word-break: normal !important;
         overflow-wrap: break-word !important;
         line-height: 1.35 !important;
         margin: 0 !important;
     }
 
-    /* Radio Dot Alignment */
+    /* Hover State (Subtle highlight on hover) */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label:hover:not(:has(input:checked)) {
+        background-color: rgba(255, 255, 255, 0.08) !important;
+        border-color: rgba(255, 255, 255, 0.25) !important;
+    }
+
+    /* 5. Modern Selected State (Deep blue card with crisp light-blue outline) */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) {
+        background-color: rgba(37, 99, 235, 0.2) !important;
+        border: 2px solid #3B82F6 !important;
+        box-shadow: 0 0 12px rgba(59, 130, 246, 0.25) !important;
+    }
+
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) p {
+        color: #FFFFFF !important;
+        font-weight: 600 !important;
+    }
+
+    /* Radio Dot Alignment & Color Match */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
-        margin-right: 10px !important;
+        margin-right: 12px !important;
         margin-left: 0 !important;
         margin-bottom: 0 !important;
         flex-shrink: 0 !important;
@@ -129,35 +149,9 @@ st.markdown("""
         line-height: 1.2 !important;
         margin-bottom: 15px !important;
     }
-            /* 1. Base Smooth Transition */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label {
-        transition: background-color 0.1s ease, filter 0.1s ease !important;
-    }
+
     
-    /* 2. Hover Effect (ONLY when NOT actively clicking) */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label:hover:not(:active) {
-        filter: brightness(0.85) !important;   /* Slightly dims color on hover */
-    }
-    
-    /* 3. Click/Press Effect: Immediately turns solid blue */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label:active,
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label:active * {
-           /* Bright Blue on tap/press */
-        border-color: #1D4ED8 !important;
-        filter: none !important;               
-        color: #FFFFFF !important;
-    }
-    
-       /* 4. Selected State: Remains Blue after clicking */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) {
-        background-color: #2563EB !important;   /* Change from #DC2626 to #2563EB (Blue) */
-        border-color: #1D4ED8 !important;       /* Darker blue border */
-    }
-    
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) p {
-        color: #FFFFFF !important;
-        font-weight: 700 !important;
-    }
+   
 
 """, unsafe_allow_html=True)
 
