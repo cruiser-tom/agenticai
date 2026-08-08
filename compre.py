@@ -34,84 +34,84 @@ st.markdown("""
         font-weight: 600 !important;
     }
 
-    /* 2. Target main question text for all widgets */
+    /* 2. Question Labels */
     div[data-testid="stWidgetLabel"] p {
         font-size: 18px !important;
         font-weight: 600 !important;
         color: #1F2937 !important;
     }
 
-    /* 3. DEFAULT RADIO GROUPS: Vertical stack with full-width wrapping cards */
+    /* 3. DEFAULT RADIO GROUPS: Lay out short demographic options horizontally */
     div[data-testid="stRadio"] > div[role="radiogroup"] {
         display: flex !important;
-        flex-direction: column !important;   /* Stacks choices vertically */
-        gap: 8px !important;
+        flex-direction: row !important;      /* Displays options in horizontal row */
+        flex-wrap: wrap !important;          /* Wraps neatly if screen width is narrow */
+        align-items: center !important;
+        gap: 10px !important;
         width: 100% !important;
         padding: 4px 0 !important;
     }
 
-    /* 4. Format option card container */
+    /* 4. Format horizontal option pills */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label {
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
-        justify-content: flex-start !important;
-        width: 100% !important;
-        height: auto !important;             /* Allows card height to expand for wrapped text */
-        padding: 10px 14px !important;
+        justify-content: center !important;
+        padding: 10px 16px !important;
         margin: 0 !important;
         background-color: rgba(128, 128, 128, 0.08) !important;
         border: 1px solid rgba(128, 128, 128, 0.2) !important;
         border-radius: 8px !important;
         cursor: pointer !important;
-        box-sizing: border-box !important;
+        flex: 0 0 auto !important;           /* Sizes pill dynamically based on text */
     }
 
-    /* 5. Force text to wrap to a new line when overflowing */
+    /* 5. Prevent number ranges (e.g. 18–24) from splitting across lines */
     div[data-testid="stRadio"] label p {
-        white-space: normal !important;       /* Replaces nowrap so text wraps automatically */
-        word-break: break-word !important;    /* Breaks long words cleanly if necessary */
-        overflow-wrap: break-word !important;
-        line-height: 1.35 !important;
+        white-space: nowrap !important;       /* Prevents mid-range word breaking */
         font-size: 15px !important;
         font-weight: 500 !important;
         margin: 0 !important;
+        line-height: 1 !important;
     }
 
     /* 6. Spacing for radio dot */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
-        margin-right: 10px !important;
+        margin-right: 8px !important;
         margin-left: 0 !important;
         margin-bottom: 0 !important;
-        flex-shrink: 0 !important;           /* Prevents radio dot from squishing when text wraps */
+        flex-shrink: 0 !important;
     }
 
-    /* 7. LIKERT / NUMBER SCALES ONLY (5-point & 7-point scales): Keep in horizontal rows */
+    /* 7. LIKERT SCALES (5-point & 7-point scales): Force 100% full-width horizontal expansion */
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"],
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] {
-        flex-direction: row !important;      /* Keeps numerical ratings in a single row */
+        display: flex !important;
+        flex-direction: row !important;
         flex-wrap: nowrap !important;
-        gap: 6px !important;
+        width: 100% !important;
+        gap: 8px !important;
     }
 
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"] > label,
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] > label {
-        flex: 1 1 0% !important;             /* Distributes scale numbers evenly */
+        flex: 1 1 0% !important;             /* Distributes 1-5 / 1-7 numbers evenly across container */
         min-width: 0 !important;
+        padding: 12px 0px !important;
         justify-content: center !important;
-        padding: 10px 2px !important;
     }
 
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"] > label p,
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] > label p {
-        font-size: 14px !important;
+        font-size: 15px !important;
         font-weight: 600 !important;
         text-align: center !important;
     }
 
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"] > label > div:first-child,
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] > label > div:first-child {
-        margin-right: 0 !important;
+        margin-right: 6px !important;
     }
 
     /* Custom class for front page title */
