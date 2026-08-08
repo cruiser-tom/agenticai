@@ -138,6 +138,24 @@ if "should_scroll" not in st.session_state:
 def request_scroll():
     st.session_state.should_scroll = True
 
+def scroll_to_top():
+    """Forces mobile and desktop viewports to scroll to the top of the Streamlit container."""
+    components.html(
+        """
+        <script>
+            // Target Streamlit's internal scroll container
+            var mainContainer = window.parent.document.querySelector('section.main') || 
+                                window.parent.document.querySelector('[data-testid="stAppViewContainer"]');
+            if (mainContainer) {
+                mainContainer.scrollTop = 0;
+            }
+            // Fallback for native window scrolling
+            window.parent.scrollTo(0, 0);
+        </script>
+        """,
+        height=0,
+    )
+
 @st.cache_resource
 def init_supabase() -> Client:
     url = st.secrets["SUPABASE_URL"]
@@ -157,6 +175,7 @@ def save_data_to_supabase(data_dict):
 # ==========================================
 # 4. SURVEY WORKFLOW
 # ==========================================
+scroll_to_top()
 current_step = st.session_state.step
 
 # Progress bar runs across the 4 core video evaluation steps
