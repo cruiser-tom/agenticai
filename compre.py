@@ -20,6 +20,10 @@ st.markdown('<div id="top-anchor"></div>', unsafe_allow_html=True)
 # Unified CSS for Font Sizes, Mobile Scale Formatting, & UI Components
 st.markdown("""
     <style>
+    /* Force Streamlit's global primary theme color to blue (fixes the red dot) */
+    :root {
+        --primary-color: #3B82F6 !important;
+    }
     /* 1. Header & Title Sizes */
     h1, h2, h3 {
         font-size: 22px !important;
