@@ -26,7 +26,7 @@ st.markdown("""
 
     /* 2. Target option choice labels (e.g., Radio button choices A, B, C) */
     div[data-testid="stRadio"] label p {
-        font-size: 20px !important;
+        font-size: 18px !important;
     }
     </style>
 """, unsafe_allow_html=True)
