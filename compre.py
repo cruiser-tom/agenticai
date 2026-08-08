@@ -41,59 +41,65 @@ st.markdown("""
         color: #1F2937 !important;
     }
 
-    /* 3. DEFAULT RADIO GROUPS: Lay out options horizontally in a row */
+    /* 3. DEFAULT RADIO GROUPS: Vertical stack with full-width wrapping cards */
     div[data-testid="stRadio"] > div[role="radiogroup"] {
         display: flex !important;
-        flex-direction: row !important;      /* Aligns options side-by-side in a row */
-        flex-wrap: wrap !important;          /* Wraps neatly on smaller screens */
-        align-items: center !important;
-        gap: 10px !important;                /* Space between horizontal pill cards */
+        flex-direction: column !important;   /* Stacks choices vertically */
+        gap: 8px !important;
         width: 100% !important;
         padding: 4px 0 !important;
     }
 
-    /* 4. Format each option as a horizontal pill button */
+    /* 4. Format option card container */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label {
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
-        justify-content: center !important;
-        padding: 8px 16px !important;        /* Comfortable padding inside each box */
+        justify-content: flex-start !important;
+        width: 100% !important;
+        height: auto !important;             /* Allows card height to expand for wrapped text */
+        padding: 10px 14px !important;
         margin: 0 !important;
         background-color: rgba(128, 128, 128, 0.08) !important;
         border: 1px solid rgba(128, 128, 128, 0.2) !important;
         border-radius: 8px !important;
         cursor: pointer !important;
-        flex: 0 1 auto !important;           /* Sizes box according to content length */
+        box-sizing: border-box !important;
     }
 
-    /* 5. Radio dot and label text alignment */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
-        margin-right: 8px !important;
-        margin-left: 0 !important;
-        margin-bottom: 0 !important;
-        flex-shrink: 0 !important;
-    }
-
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label p {
+    /* 5. Force text to wrap to a new line when overflowing */
+    div[data-testid="stRadio"] label p {
+        white-space: normal !important;       /* Replaces nowrap so text wraps automatically */
+        word-break: break-word !important;    /* Breaks long words cleanly if necessary */
+        overflow-wrap: break-word !important;
+        line-height: 1.35 !important;
         font-size: 15px !important;
         font-weight: 500 !important;
-        white-space: nowrap !important;
         margin: 0 !important;
-        line-height: 1 !important;
     }
 
-    /* 6. EVEN EXPANSION FOR SCALES (5-point & 7-point scales): Stretch across full width */
+    /* 6. Spacing for radio dot */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
+        margin-right: 10px !important;
+        margin-left: 0 !important;
+        margin-bottom: 0 !important;
+        flex-shrink: 0 !important;           /* Prevents radio dot from squishing when text wraps */
+    }
+
+    /* 7. LIKERT / NUMBER SCALES ONLY (5-point & 7-point scales): Keep in horizontal rows */
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"],
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] {
+        flex-direction: row !important;      /* Keeps numerical ratings in a single row */
         flex-wrap: nowrap !important;
+        gap: 6px !important;
     }
 
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"] > label,
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] > label {
-        flex: 1 1 0% !important;             /* Stretches rating scale numbers evenly */
-        padding: 10px 4px !important;
-        gap: 6px !important;
+        flex: 1 1 0% !important;             /* Distributes scale numbers evenly */
+        min-width: 0 !important;
+        justify-content: center !important;
+        padding: 10px 2px !important;
     }
 
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"] > label p,
@@ -103,7 +109,12 @@ st.markdown("""
         text-align: center !important;
     }
 
-    /* Custom class for the front page title */
+    div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"] > label > div:first-child,
+    div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] > label > div:first-child {
+        margin-right: 0 !important;
+    }
+
+    /* Custom class for front page title */
     .main-title, .main-title p {
         font-size: 34px !important;
         font-weight: 700 !important;
@@ -112,6 +123,7 @@ st.markdown("""
     }
     </style>
 """, unsafe_allow_html=True)
+
 # ==========================================
 # 2. EXPERIMENTAL SCENARIOS DEFINITION
 # ==========================================
