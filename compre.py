@@ -148,9 +148,10 @@ st.markdown("""
         color: #FFFFFF !important;
     }
     
-    /* 4. Selected State: Remains Red after release */
+       /* 4. Selected State: Remains Blue after clicking */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) {
-        border-color: #B91C1C !important;
+        background-color: #2563EB !important;   /* Change from #DC2626 to #2563EB (Blue) */
+        border-color: #1D4ED8 !important;       /* Darker blue border */
     }
     
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) p {
