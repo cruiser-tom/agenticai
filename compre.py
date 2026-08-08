@@ -15,16 +15,31 @@ st.set_page_config(
     layout="centered"
 )
 
+# Unified CSS for Font Sizes, Mobile Scale Formatting, & UI Components
 st.markdown("""
     <style>
-    /* 1. Target main question text */
+    /* 1. Reduce Scenario & Section Header Sizes */
+    h1, h2, h3 {
+        font-size: 22px !important;
+        font-weight: 700 !important;
+        margin-top: 10px !important;
+        margin-bottom: 12px !important;
+        line-height: 1.3 !important;
+    }
+    
+    h4 {
+        font-size: 18px !important;
+        font-weight: 600 !important;
+    }
+
+    /* 2. Target main question text for all widgets */
     div[data-testid="stWidgetLabel"] p {
-        font-size: 19px !important;
+        font-size: 18px !important;
         font-weight: 600 !important;
         color: #1F2937 !important;
     }
 
-    /* 2. Force 1-7 rating scale radio buttons onto a single horizontal line on mobile */
+    /* 3. Force 1-7 rating scale radio buttons onto a single horizontal line on mobile */
     div[data-testid="stRadio"] > div[role="radiogroup"] {
         flex-direction: row !important;
         flex-wrap: nowrap !important;         /* Prevents wrapping to next line */
@@ -33,7 +48,7 @@ st.markdown("""
         width: 100% !important;
     }
 
-    /* 3. Adjust padding for each radio button choice to fit 7 columns */
+    /* 4. Adjust padding for each radio button choice to fit 7 columns */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label {
         flex: 1 1 auto !important;
         min-width: 0 !important;
@@ -42,26 +57,18 @@ st.markdown("""
         justify-content: center !important;
     }
 
-    /* 4. Choice text styling (numbers 1-7) */
+    /* 5. Choice text styling (numbers 1-7) */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label p {
         font-size: 15px !important;          /* Slightly smaller size so 1-7 don't clip */
         text-align: center !important;
     }
+
+    /* 6. Custom Card, Video, and Button Styles */
+    .stVideo { border-radius: 6px; overflow: hidden; box-shadow: 0px 4px 12px rgba(0,0,0,0.15); }
+    .scenario-card { background-color: #f8f9fa; padding: 10px; border-radius: 6px; margin-bottom: 10px; border-left: 5px solid #0066cc; }
+    .stButton>button { width: 100%; border-radius: 6px; font-weight: bold; background-color: #0066cc; color: white; }
     </style>
 """, unsafe_allow_html=True)
-
-
-st.markdown("""
-    <style>
-    .stVideo { border-radius: 5px; overflow: hidden; box-shadow: 0px 4px 12px rgba(0,0,0,0.15); }
-    .scenario-card { background-color: #f8f9fa; padding: 5px; border-radius: 5px; margin-bottom: 5px; border-left: 5px solid #0066cc; }
-    .stButton>button { width: 100%; border-radius: 5px; font-weight: bold; background-color: #0066cc; color: white; }
-    </style>
-""", unsafe_allow_html=True)
-
-
-
-DATA_FILE = "survey_responses.csv"
 
 # ==========================================
 # 2. EXPERIMENTAL SCENARIOS DEFINITION
