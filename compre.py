@@ -14,11 +14,13 @@ st.set_page_config(
     page_icon="🤖",
     layout="centered"
 )
+
 st.markdown('<div id="top-anchor"></div>', unsafe_allow_html=True)
 
+# Unified CSS for Font Sizes, Mobile Scale Formatting, & UI Components
 st.markdown("""
     <style>
-    /* 1. Scenario & Section Header Sizes */
+    /* 1. Header & Title Sizes */
     h1, h2, h3 {
         font-size: 22px !important;
         font-weight: 700 !important;
@@ -34,57 +36,63 @@ st.markdown("""
 
     /* 2. Target main question text for all widgets */
     div[data-testid="stWidgetLabel"] p {
-        font-size: 20px !important;
+        font-size: 18px !important;
         font-weight: 600 !important;
         color: #1F2937 !important;
     }
 
-    /* 3. Horizontal layout row with spacing between options */
+    /* 3. Global fix for long text choices (e.g. Question 2): Allow full text wrapping */
+    div[data-testid="stRadio"] label p {
+        white-space: normal !important;
+        word-break: break-word !important;
+        line-height: 1.3 !important;
+    }
+
+    /* 4. Horizontal 1-7 Scale Row Container: Fits 100% screen width without overflow */
     div[data-testid="stRadio"] > div[role="radiogroup"] {
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: nowrap !important;
         justify-content: space-between !important;
-        align-items: center !important;
-        gap: 12px !important;               /* Creates clear space between options 1-7 */
+        align-items: stretch !important;
+        gap: 3px !important;                /* Compact gap so all 7 fit on mobile */
         width: 100% !important;
-        padding: 8px 0 !important;
-        overflow-x: auto !important;         /* Ensures smooth swipe on ultra-narrow screens */
+        padding: 4px 0 !important;
     }
 
-    /* 4. Format each option pill with spacing between dot & number */
+    /* 5. Pill formatting for each 1-7 choice (Dot stacked directly ABOVE Number) */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label {
+        flex: 1 1 0 !important;              /* Equal 1/7th width distribution */
+        min-width: 0 !important;             /* Prevents options from spilling off-screen */
         display: flex !important;
-        flex-direction: row !important;
+        flex-direction: column !important;     /* Stacks radio circle on top of number */
         align-items: center !important;
         justify-content: center !important;
-        gap: 6px !important;                /* Space between radio circle and number */
-        padding: 8px 12px !important;      /* Comfortable touch target padding */
+        padding: 6px 0px !important;          /* Slim vertical padding */
+        margin: 0 !important;
         background-color: rgba(128, 128, 128, 0.08) !important;
         border: 1px solid rgba(128, 128, 128, 0.2) !important;
-        border-radius: 8px !important;
+        border-radius: 6px !important;
         cursor: pointer !important;
-        flex-shrink: 0 !important;
     }
 
-    /* 5. Reset internal Streamlit circle margins */
+    /* 6. Remove default right margin on the radio circle */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
-        margin: 0 !important;
-        padding: 0 !important;
+        margin-right: 0 !important;
+        margin-bottom: 2px !important;
     }
 
-    /* 6. Option number formatting */
+    /* 7. Number styling for 1-7 choices */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label p {
-        font-size: 16px !important;
+        font-size: 13px !important;
         font-weight: 600 !important;
+        text-align: center !important;
         margin: 0 !important;
-        padding: 0 !important;
-        line-height: 1 !important;
     }
 
     /* Custom class for the front page title */
     .main-title, .main-title p {
-        font-size: 38px !important;
+        font-size: 34px !important;
         font-weight: 700 !important;
         line-height: 1.2 !important;
         margin-bottom: 15px !important;
