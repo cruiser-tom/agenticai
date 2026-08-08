@@ -41,7 +41,24 @@ st.markdown("""
     }
 
 
+  
+    }
 
+    /* 2. Format each option as a stacked vertical pill */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label {
+        flex: 1 1 0 !important;
+        display: flex !important;
+        flex-direction: column !important;  /* Stacks circle above number */
+        align-items: center !important;
+        justify-content: center !important;
+        background-color: var(--background-secondary-color, rgba(128, 128, 128, 0.05)) !important;
+        border: 1px solid rgba(128, 128, 128, 0.15) !important;
+        border-radius: 8px !important;
+        padding: 5px 5px !important;
+        margin: 2 !important;
+        min-width: 0 !important;
+        cursor: pointer !important;
+    }
 /* 1. Equal width row for 1-7 scale */
     div[data-testid="stRadio"] > div[role="radiogroup"] {
         display: flex !important;
@@ -49,7 +66,7 @@ st.markdown("""
         flex-wrap: nowrap !important;
         justify-content: space-between !important;
         gap: 11px !important;
-        width: 100% !important;
+        width: 120% !important;
     }
 
     /* 3. Center inner elements & reset side margins */
