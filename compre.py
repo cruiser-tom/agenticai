@@ -57,19 +57,20 @@ st.markdown("""
         align-items: stretch !important;
         width: 100% !important;
         max-width: 100% !important;
-        gap: 9px !important;                 /* Even spacing between scale pills */
-        padding: 6px 3px !important;
+        gap: 8px !important;
+        padding: 6px 0 !important;
     }
 
-    /* 5. Scale Options: Forces each 1-7 pill to expand equally across full container width */
+    /* 5. Scale Options: Added internal margin/padding inside the pill container */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label {
-        flex: 1 1 0% !important;             /* Distributes all 7 options evenly across 100% width */
+        flex: 1 1 0% !important;
         min-width: 0 !important;
         display: flex !important;
-        flex-direction: row !important;       /* Circle on left, number on right */
+        flex-direction: row !important;
         align-items: center !important;
         justify-content: center !important;
-        padding: 8px 0px !important;
+        padding: 10px 10px !important;       /* Increased internal padding inside container */
+        gap: 8px !important;                /* Added space between radio bullet point and number */
         margin: 0 !important;
         background-color: rgba(128, 128, 128, 0.08) !important;
         border: 1px solid rgba(128, 128, 128, 0.2) !important;
@@ -77,10 +78,10 @@ st.markdown("""
         cursor: pointer !important;
     }
 
-    /* 6. Spacing between radio circle and number */
+    /* 6. Radio bullet point container resets */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
-        margin-right: 4px !important;
-        margin-left: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     /* 7. Option number text formatting */
