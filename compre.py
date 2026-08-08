@@ -91,6 +91,7 @@ st.markdown("""
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] {
         flex-direction: row !important;      /* Forces horizontal row for scales only */
         flex-wrap: nowrap !important;
+        padding: 10px 10px !important;
         gap: 8px !important;                
         margin: 0 !important;
     }
