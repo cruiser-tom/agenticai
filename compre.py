@@ -408,16 +408,12 @@ elif current_step >= len(SCENARIOS) + 2:
     st.balloons()
     st.title("🎉 Thank You!")
     st.success("Your responses and demographic data have been successfully recorded.")
-    st.markdown(f"""
-    
-    ```
+    st.success("
     The following code gives you Karma that can be used to get free research participants at SurveySwap.io.
 
     Go to: https://surveyswap.io/sr/INPA-DKBQ-VTM6
 
-    Or, alternatively, enter the code manually: INPA-DKBQ-VTM6
-    ```
-    """)
+    Or, alternatively, enter the code manually: INPA-DKBQ-VTM6")
 
 # ==========================================
 # 5. ASYNC SCROLL TO TOP EXECUTION
