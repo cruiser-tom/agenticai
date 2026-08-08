@@ -120,16 +120,42 @@ SCENARIOS = [
     }
 ]
 def scroll_to_top():
-    """Forces mobile and desktop viewports to scroll to the top of the Streamlit container."""
+    """Forces mobile and desktop viewports to scroll to top after rendering."""
     components.html(
         """
         <script>
-            var mainContainer = window.parent.document.querySelector('section.main') || 
-                                window.parent.document.querySelector('[data-testid="stAppViewContainer"]');
-            if (mainContainer) {
-                mainContainer.scrollTop = 0;
+            function forceScrollTop() {
+                try {
+                    var pDoc = window.parent.document;
+                    
+                    // 1. Target all possible Streamlit scroll containers on mobile
+                    var targets = [
+                        pDoc.querySelector('section.main'),
+                        pDoc.querySelector('[data-testid="stAppViewContainer"]'),
+                        pDoc.querySelector('.stApp'),
+                        pDoc.documentElement,
+                        pDoc.body
+                    ];
+
+                    targets.forEach(function(el) {
+                        if (el) {
+                            el.scrollTop = 0;
+                        }
+                    });
+
+                    // 2. Native parent window scroll
+                    window.parent.scrollTo(0, 0);
+                } catch (e) {
+                    console.log("Scroll attempt error:", e);
+                }
             }
-            window.parent.scrollTo(0, 0);
+
+            // Run immediately
+            forceScrollTop();
+
+            // Run again after 100ms and 300ms to catch mobile touch-inertia and DOM rerenders
+            setTimeout(forceScrollTop, 100);
+            setTimeout(forceScrollTop, 300);
         </script>
         """,
         height=0,
