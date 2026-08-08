@@ -119,6 +119,23 @@ SCENARIOS = [
         "distractors": ["Moved a file into a different folder", "Shared a file with another user"]
     }
 ]
+def scroll_to_top():
+    """Forces mobile and desktop viewports to scroll to the top of the Streamlit container."""
+    components.html(
+        """
+        <script>
+            var mainContainer = window.parent.document.querySelector('section.main') || 
+                                window.parent.document.querySelector('[data-testid="stAppViewContainer"]');
+            if (mainContainer) {
+                mainContainer.scrollTop = 0;
+            }
+            window.parent.scrollTo(0, 0);
+        </script>
+        """,
+        height=0,
+    )
+
+scroll_to_top()
 
 # ==========================================
 # 3. SESSION STATE INITIALIZATION
@@ -138,23 +155,7 @@ if "should_scroll" not in st.session_state:
 def request_scroll():
     st.session_state.should_scroll = True
 
-def scroll_to_top():
-    """Forces mobile and desktop viewports to scroll to the top of the Streamlit container."""
-    components.html(
-        """
-        <script>
-            // Target Streamlit's internal scroll container
-            var mainContainer = window.parent.document.querySelector('section.main') || 
-                                window.parent.document.querySelector('[data-testid="stAppViewContainer"]');
-            if (mainContainer) {
-                mainContainer.scrollTop = 0;
-            }
-            // Fallback for native window scrolling
-            window.parent.scrollTo(0, 0);
-        </script>
-        """,
-        height=0,
-    )
+
 
 @st.cache_resource
 def init_supabase() -> Client:
