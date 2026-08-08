@@ -109,12 +109,14 @@ st.markdown("""
         font-weight: 600 !important;
     }
 
-    /* Radio Dot Alignment & Color Match */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
-        margin-right: 12px !important;
-        margin-left: 0 !important;
-        margin-bottom: 0 !important;
-        flex-shrink: 0 !important;
+        /* Force inner radio dot to blue when selected */
+    div[data-testid="stRadio"] label:has(input:checked) svg,
+    div[data-testid="stRadio"] label:has(input:checked) svg *,
+    div[data-testid="stRadio"] label:has(input:checked) circle,
+    div[data-testid="stRadio"] label:has(input:checked) path {
+        fill: #3B82F6 !important;
+        stroke: #3B82F6 !important;
+        color: #3B82F6 !important;
     }
     /* 6. RATING SCALES ONLY (5-point & 7-point scales): Horizontal single row */
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"],
