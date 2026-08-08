@@ -41,58 +41,76 @@ st.markdown("""
         color: #1F2937 !important;
     }
 
-    /* 3. Global fix for vertical/long text choices: Allow full text wrapping */
-    div[data-testid="stRadio"] label p {
-        white-space: normal !important;
-        word-break: break-word !important;
-        line-height: 1.3 !important;
-    }
-
-    /* 4. Horizontal Scale Row Container: Expands to 100% full width */
+    /* 3. DEFAULT TEXT RADIO OPTIONS (e.g., Q1 & Q2): Stack vertically into full-width cards */
     div[data-testid="stRadio"] > div[role="radiogroup"] {
         display: flex !important;
+        flex-direction: column !important;   /* Stacks choices vertically */
+        gap: 8px !important;
+        width: 100% !important;
+    }
+
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        width: 100% !important;               /* Full screen width so text never chops */
+        padding: 12px 14px !important;
+        margin: 0 !important;
+        background-color: rgba(128, 128, 128, 0.08) !important;
+        border: 1px solid rgba(128, 128, 128, 0.2) !important;
+        border-radius: 8px !important;
+        cursor: pointer !important;
+    }
+
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label p {
+        font-size: 15px !important;
+        font-weight: 500 !important;
+        white-space: normal !important;
+        word-break: normal !important;
+        overflow-wrap: break-word !important;
+        line-height: 1.3 !important;
+        margin: 0 !important;
+    }
+
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
+        margin-right: 10px !important;
+        margin-bottom: 0 !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* 4. 1-7 LIKERT SCALES ONLY (Radio groups with exactly 7 options): Keep horizontal full-width row */
+    div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] {
         flex-direction: row !important;
         flex-wrap: nowrap !important;
         justify-content: space-between !important;
         align-items: stretch !important;
-        width: 100% !important;
-        max-width: 100% !important;
         gap: 8px !important;
         padding: 6px 0 !important;
     }
 
-    /* 5. Scale Options: Added internal margin/padding inside the pill container */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label {
-        flex: 1 1 0% !important;
+    div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] > label {
+        flex: 1 1 0% !important;             /* Distributes 7 items evenly across row */
         min-width: 0 !important;
-        display: flex !important;
+        width: auto !important;
         flex-direction: row !important;
         align-items: center !important;
         justify-content: center !important;
-        padding: 10px 10px !important;       /* Increased internal padding inside container */
-        gap: 8px !important;                /* Added space between radio bullet point and number */
-        margin: 0 !important;
-        background-color: rgba(128, 128, 128, 0.08) !important;
-        border: 1px solid rgba(128, 128, 128, 0.2) !important;
-        border-radius: 6px !important;
-        cursor: pointer !important;
+        padding: 10px 4px !important;
+        gap: 6px !important;
     }
 
-    /* 6. Radio bullet point container resets */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    /* 7. Option number text formatting */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label p {
+    div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] > label p {
         font-size: 14px !important;
         font-weight: 600 !important;
         text-align: center !important;
-        margin: 0 !important;
     }
 
-    /* Custom class for the front page title */
+    div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(7)) > div[role="radiogroup"] > label > div:first-child {
+        margin-right: 0 !important;
+    }
+
+    /* Custom class for front page title */
     .main-title, .main-title p {
         font-size: 34px !important;
         font-weight: 700 !important;
