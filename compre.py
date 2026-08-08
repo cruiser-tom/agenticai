@@ -59,8 +59,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Top invisible anchor for smooth scrolling reset
-st.markdown("<div id='top-anchor'></div>", unsafe_allow_html=True)
+st.markdown(f"### Scenario {st.session_state.current_scenario + 1}: {sc['title']}")
 
 DATA_FILE = "survey_responses.csv"
 
