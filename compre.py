@@ -41,34 +41,35 @@ st.markdown("""
         color: #1F2937 !important;
     }
 
-    /* 3. Global fix for long text choices (e.g. Question 2): Allow full text wrapping */
+    /* 3. Global fix for vertical/long text choices: Allow full text wrapping */
     div[data-testid="stRadio"] label p {
         white-space: normal !important;
         word-break: break-word !important;
         line-height: 1.3 !important;
     }
 
-    /* 4. Horizontal 1-7 Scale Row Container: Fits 100% screen width without overflow */
+    /* 4. Horizontal Scale Row Container: Expands to 100% full width */
     div[data-testid="stRadio"] > div[role="radiogroup"] {
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: nowrap !important;
         justify-content: space-between !important;
         align-items: stretch !important;
-        gap: 3px !important;                /* Compact gap so all 7 fit on mobile */
         width: 100% !important;
-        padding: 4px 0 !important;
+        max-width: 100% !important;
+        gap: 8px !important;                 /* Even spacing between scale pills */
+        padding: 6px 0 !important;
     }
 
-    /* 5. Pill formatting for each 1-7 choice (Dot stacked directly ABOVE Number) */
+    /* 5. Scale Options: Forces each 1-7 pill to expand equally across full container width */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label {
-        flex: 1 1 0 !important;              /* Equal 1/7th width distribution */
-        min-width: 0 !important;             /* Prevents options from spilling off-screen */
+        flex: 1 1 0% !important;             /* Distributes all 7 options evenly across 100% width */
+        min-width: 0 !important;
         display: flex !important;
-        flex-direction: column !important;     /* Stacks radio circle on top of number */
+        flex-direction: row !important;       /* Circle on left, number on right */
         align-items: center !important;
         justify-content: center !important;
-        padding: 6px 0px !important;          /* Slim vertical padding */
+        padding: 8px 0px !important;
         margin: 0 !important;
         background-color: rgba(128, 128, 128, 0.08) !important;
         border: 1px solid rgba(128, 128, 128, 0.2) !important;
@@ -76,15 +77,15 @@ st.markdown("""
         cursor: pointer !important;
     }
 
-    /* 6. Remove default right margin on the radio circle */
+    /* 6. Spacing between radio circle and number */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
-        margin-right: 0 !important;
-        margin-bottom: 2px !important;
+        margin-right: 4px !important;
+        margin-left: 0 !important;
     }
 
-    /* 7. Number styling for 1-7 choices */
+    /* 7. Option number text formatting */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label p {
-        font-size: 13px !important;
+        font-size: 14px !important;
         font-weight: 600 !important;
         text-align: center !important;
         margin: 0 !important;
