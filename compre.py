@@ -129,28 +129,26 @@ st.markdown("""
         line-height: 1.2 !important;
         margin-bottom: 15px !important;
     }
-         /* 1. Base Smooth Transition */
+            /* 1. Base Smooth Transition */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label {
-        transition: background-color 0.15s ease, filter 0.15s ease !important;
+        transition: background-color 0.1s ease, filter 0.1s ease !important;
     }
     
-    /* 2. Hover Effect: Dims the color slightly, automatically restores on unhover */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label:hover {
-        filter: brightness(0.8) !important;    /* Dims button color by 20% */
+    /* 2. Hover Effect (ONLY when NOT actively clicking) */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label:hover:not(:active) {
+        filter: brightness(0.85) !important;   /* Slightly dims color on hover */
     }
     
-    /* 3. Active Click Effect: Momentarily turns blue while being pressed */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label:active {
-        background-color: #2563EB !important;   /* Bright Blue on press */
+    /* 3. Click/Press Effect: Immediately turns solid blue */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label:active,
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label:active * {
+        background-color: #2563EB !important;   /* Bright Blue on tap/press */
         border-color: #1D4ED8 !important;
-        filter: brightness(1) !important;
-    }
-    
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label:active p {
+        filter: none !important;                /* Removes hover dimming so blue pops */
         color: #FFFFFF !important;
     }
     
-    /* 4. Selected State: Remains bold Red once clicked/selected */
+    /* 4. Selected State: Remains Red after release */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) {
         background-color: #DC2626 !important;   /* Solid Red background */
         border-color: #B91C1C !important;
@@ -160,6 +158,7 @@ st.markdown("""
         color: #FFFFFF !important;
         font-weight: 700 !important;
     }
+
 """, unsafe_allow_html=True)
 
 # ==========================================
