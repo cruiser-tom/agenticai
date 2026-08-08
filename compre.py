@@ -142,7 +142,7 @@ st.markdown("""
     /* 3. Click/Press Effect: Immediately turns solid blue */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:active,
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:active * {
-        background-color: #2563EB !important;   /* Bright Blue on tap/press */
+           /* Bright Blue on tap/press */
         border-color: #1D4ED8 !important;
         filter: none !important;                /* Removes hover dimming so blue pops */
         color: #FFFFFF !important;
