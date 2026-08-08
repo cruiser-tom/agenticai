@@ -167,7 +167,6 @@ if 1 <= current_step <= len(SCENARIOS):
 if current_step == 0:
     st.markdown('<div class="main-title">🤖 Agentic AI Interaction Study</div>', unsafe_allow_html=True)
     st.subheader("Participant Information")
-    st.subheader("Participant Information")
     st.markdown("""
     Welcome! In this brief study, you will watch short recordings of an **Autonomous Mobile AI Agent** performing requested actions on a mobile device.
     
