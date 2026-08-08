@@ -187,7 +187,7 @@ def save_data_to_supabase(data_dict):
 # ==========================================
 # 4. SURVEY WORKFLOW
 # ==========================================
-scroll_to_top()
+
 current_step = st.session_state.step
 
 # Progress bar runs across the 4 core video evaluation steps
@@ -211,7 +211,6 @@ if current_step == 0:
     
     if st.button("Start Study 🚀", type="primary"):
         st.session_state.step = 1
-        request_scroll()
         scroll_to_top()
         st.rerun()
 
@@ -317,7 +316,6 @@ elif 1 <= current_step <= len(SCENARIOS):
             st.session_state.responses[f"{prefix}_reasoning"] = reasoning.strip() if reasoning else ""
             
             st.session_state.step += 1
-            request_scroll()
             scroll_to_top()
             st.rerun()
 
@@ -368,7 +366,6 @@ elif current_step == len(SCENARIOS) + 1:
             # REPLACE WITH THIS
             if save_data_to_supabase(st.session_state.responses):
                 st.session_state.step += 1
-                request_scroll()
                 scroll_to_top()
                 st.rerun()
 
