@@ -66,7 +66,7 @@ st.markdown("""
         flex-wrap: nowrap !important;
         justify-content: space-between !important;
         gap: 11px !important;
-        width: 120% !important;
+        width: 100% !important;
     }
 
     /* 3. Center inner elements & reset side margins */
