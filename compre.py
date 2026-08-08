@@ -16,10 +16,9 @@ st.set_page_config(
 )
 st.markdown('<div id="top-anchor"></div>', unsafe_allow_html=True)
 
-# Unified CSS for Font Sizes, Mobile Scale Formatting, & UI Components
 st.markdown("""
     <style>
-    /* 1. Reduce Scenario & Section Header Sizes */
+    /* 1. Scenario & Section Header Sizes */
     h1, h2, h3 {
         font-size: 22px !important;
         font-weight: 700 !important;
@@ -40,72 +39,58 @@ st.markdown("""
         color: #1F2937 !important;
     }
 
-
-  
-    }
-
-    /* 2. Format each option as a stacked vertical pill */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label {
-        flex: 1 1 0 !important;
-        display: flex !important;
-        flex-direction: column !important;  /* Stacks circle above number */
-        align-items: center !important;
-        justify-content: center !important;
-        background-color: var(--background-secondary-color, rgba(128, 128, 128, 0.05)) !important;
-        border: 1px solid rgba(128, 128, 128, 0.15) !important;
-        border-radius: 8px !important;
-        padding: 5px 5px !important;
-        margin: 2 !important;
-        min-width: 0 !important;
-        cursor: pointer !important;
-    }
-/* 1. Equal width row for 1-7 scale */
+    /* 3. Horizontal layout row with spacing between options */
     div[data-testid="stRadio"] > div[role="radiogroup"] {
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: nowrap !important;
         justify-content: space-between !important;
-        gap: 11px !important;
+        align-items: center !important;
+        gap: 12px !important;               /* Creates clear space between options 1-7 */
         width: 100% !important;
+        padding: 8px 0 !important;
+        overflow-x: auto !important;         /* Ensures smooth swipe on ultra-narrow screens */
     }
 
-    /* 3. Center inner elements & reset side margins */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div {
+    /* 4. Format each option pill with spacing between dot & number */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label {
         display: flex !important;
-        justify-content: center !important;
+        flex-direction: row !important;
         align-items: center !important;
+        justify-content: center !important;
+        gap: 6px !important;                /* Space between radio circle and number */
+        padding: 8px 12px !important;      /* Comfortable touch target padding */
+        background-color: rgba(128, 128, 128, 0.08) !important;
+        border: 1px solid rgba(128, 128, 128, 0.2) !important;
+        border-radius: 8px !important;
+        cursor: pointer !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* 5. Reset internal Streamlit circle margins */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
         margin: 0 !important;
         padding: 0 !important;
     }
 
-    /* 4. Remove right margin from radio dot and push down slightly */
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
-        margin-right: 0 !important;
-        margin-bottom: 4px !important;
-    }
-
-    /* 5. Center number label below circle */
+    /* 6. Option number formatting */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label p {
-        font-size: 15px !important;
+        font-size: 16px !important;
         font-weight: 600 !important;
-        text-align: center !important;
         margin: 0 !important;
+        padding: 0 !important;
         line-height: 1 !important;
     }
 
-
-
-
-    /* Custom class for the front page title and its internal paragraph tags */
+    /* Custom class for the front page title */
     .main-title, .main-title p {
-    font-size: 38px !important;
-    font-weight: 700 !important;
-    line-height: 1.2 !important;
-    margin-bottom: 15px !important;
-}
+        font-size: 38px !important;
+        font-weight: 700 !important;
+        line-height: 1.2 !important;
+        margin-bottom: 15px !important;
+    }
     </style>
 """, unsafe_allow_html=True)
-
 # ==========================================
 # 2. EXPERIMENTAL SCENARIOS DEFINITION
 # ==========================================
