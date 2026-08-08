@@ -59,7 +59,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.markdown(f"### {sc['title']}")
+
 
 DATA_FILE = "survey_responses.csv"
 
