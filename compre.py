@@ -99,14 +99,15 @@ st.markdown("""
         accent-color: #3B82F6 !important;
     }
    
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child *,
-    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child * {
+    div[data-testid="stRadio"][data-testid="stRadio"] > div[role="radiogroup"][role="radiogroup"] > label > div:first-child,
+    div[data-testid="stRadio"][data-testid="stRadio"] > div[role="radiogroup"][role="radiogroup"] > label > div:first-child * {
         background-color: #3B82F6 !important;
         background-image: none !important;
-        box-shadow: inset 0 0 0 999px #3B82F6 !important;
+        box-shadow: none !important;
+        border-color: #3B82F6 !important;
         fill: #3B82F6 !important;
         color: #3B82F6 !important;
-}
+    }
  
     /* 5. Selected State Container (Clean Blue Card) */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) {
