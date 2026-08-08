@@ -68,7 +68,7 @@ st.markdown("""
         transition: all 0.15s ease-in-out !important;
     }
 
-   /* Unselected Option Text */
+    /* 1. Option Text (Normal Weight) */
     div[data-testid="stRadio"] label p {
         font-size: 15px !important;
         font-weight: 500 !important;
@@ -79,44 +79,46 @@ st.markdown("""
         line-height: 1.35 !important;
         margin: 0 !important;
     }
-
-    /* Hover State (Subtle highlight on hover) */
+    
+    /* 2. Hover State */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:hover:not(:has(input:checked)) {
         background-color: rgba(255, 255, 255, 0.08) !important;
         border-color: rgba(255, 255, 255, 0.25) !important;
     }
-
-    /* Force inner radio dot to blue when selected (includes SVG fill support) */
-    div[data-testid="stRadio"] label input[type="radio"]:checked + div,
-    div[data-testid="stRadio"] label:has(input:checked) div[role="radio"],
-    div[data-testid="stRadio"] label:has(input:checked) > div:first-child,
-    div[data-testid="stRadio"] label:has(input:checked) > div:first-child * {
+    
+    /* 3. Comprehensive Radio Dot Override (Force all child elements to Blue) */
+    div[data-testid="stRadio"] [aria-checked="true"],
+    div[data-testid="stRadio"] [aria-checked="true"] *,
+    div[data-testid="stRadio"] label:has(input:checked) div,
+    div[data-testid="stRadio"] label:has(input:checked) span,
+    div[data-testid="stRadio"] label:has(input:checked) svg,
+    div[data-testid="stRadio"] label:has(input:checked) path,
+    div[data-testid="stRadio"] label:has(input:checked) circle {
         background-color: #3B82F6 !important;
         border-color: #3B82F6 !important;
         fill: #3B82F6 !important;
-        accent-color: #3B82F6 !important;
+        stroke: #3B82F6 !important;
     }
-
-    /* 5. Modern Selected State (Deep blue card with crisp light-blue outline) */
+    
+    /* 4. Selected State Container */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) {
         background-color: rgba(37, 99, 235, 0.2) !important;
         border: 2px solid #3B82F6 !important;
         box-shadow: 0 0 12px rgba(59, 130, 246, 0.25) !important;
     }
-
+    
+    /* 5. Selected Option Text (Non-bold, matches regular 500 weight) */
     div[data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) p {
         color: #FFFFFF !important;
-        font-weight: 600 !important;
+        font-weight: 500 !important;
     }
-
-        /* Force inner radio dot to blue when selected */
-    div[data-testid="stRadio"] label:has(input:checked) svg,
-    div[data-testid="stRadio"] label:has(input:checked) svg *,
-    div[data-testid="stRadio"] label:has(input:checked) circle,
-    div[data-testid="stRadio"] label:has(input:checked) path {
-        fill: #3B82F6 !important;
-        stroke: #3B82F6 !important;
-        color: #3B82F6 !important;
+    
+    /* 6. Radio Dot Alignment */
+    div[data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
+        margin-right: 12px !important;
+        margin-left: 0 !important;
+        margin-bottom: 0 !important;
+        flex-shrink: 0 !important;
     }
     /* 6. RATING SCALES ONLY (5-point & 7-point scales): Horizontal single row */
     div[data-testid="stRadio"]:has(div[role="radiogroup"] > label:nth-child(5)) > div[role="radiogroup"],
